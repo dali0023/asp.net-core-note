@@ -140,7 +140,7 @@ namespace CoffeeShop.Data
 }
 ```
 2. **Create Database Connection String to `appsettings.json`**
-```c#
+```json
   "AllowedHosts": "*",
   "ConnectionStrings": {
     "CoffeeShopDbContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=CoffeeShopDb;Trusted_Connection=True;MultipleActiveResultSets=true"
