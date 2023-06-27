@@ -50,13 +50,12 @@ public void ConfigureServices(IServiceCollection services)
 **For PostgreSQL**
 ```c#
 services.AddDbContext<AppContext>(options => options.UseNpgsql(connection));
-```
-**For MySQL**
-```c#
+
+// For MySQL
 services.AddDbContext<AppContext>(options => options.UseMySql(connection));
-```
-**Or For SQL Server**
-```c#
+
+// Or For SQL Server
+
 services.AddDbContext<AppContext>(options => options.UseSqlServer(connection));
 ```
 
