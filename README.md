@@ -1,7 +1,13 @@
 # asp.net-core-note
 
 # Model
-### Add a data model class
+- Add a data model class
+- Install Packages:
+   > `Microsoft.EntityFrameworkCore`
+   > `Microsoft.EntityFrameworkCore.SqlServer`
+   > `Microsoft.EntityFrameworkCore.Tools`
+- DbContext(Database) and DbSet(Table)
+   
 ```c#
 using System.ComponentModel.DataAnnotations;
 
@@ -68,55 +74,87 @@ namespace CoffeeShop.Models.Interfaces
     {
         IEnumerable<Product> GetAllProducts();
         IEnumerable<Product> GetTrendingProducts();
-        Product GetProductDetail(int id);
+        Product? GetProductDetail(int id);
     }
 }
 ```
 **Create an `Class` for the repository inside the `Models/Repositories`**
 `Models/Repositories/ProductRepository.cs`
 ```c#
+using CoffeeShop.Data;
 using CoffeeShop.Models.Interfaces;
 
 namespace CoffeeShop.Models.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private List<Product> ProductsList = new List<Product>()
+        private CoffeeShopDbContext _dbContext;
+
+        public ProductRepository(CoffeeShopDbContext _dbContext)
         {
-            new Product { Id = 1, Name= "America", Price=25, Detail="It is a long established fact ", ImageUrl="https://coffeeassoc.com/wp-content/uploads/2021/07/nathan-dumlao-6VhPY27jdps-unsplash-1-scaled.jpg", IsTrendingProduct=true},
-            new Product { Id = 2, Name= "Bangladesh", Price=10, Detail="There are many variations of passages", ImageUrl="https://www.tastingtable.com/img/gallery/coffee-brands-ranked-from-worst-to-best/l-intro-1645231221.jpg", IsTrendingProduct=true},
-            new Product { Id = 3, Name= "Canada", Price=36, Detail="All the Lorem Ipsum generators on the Internet ", ImageUrl="https://foolproofliving.com/wp-content/uploads/2019/03/Turkish-Coffee-Recipe-600x600.jpg", IsTrendingProduct=false}
-        };
-        public IEnumerable<Product> GetAllProducts()
-        {
-            return ProductsList;
+            this._dbContext = _dbContext;
         }
 
-        public Product GetProductDetail(int id)
+        public IEnumerable<Product> GetAllProducts()
         {
-            return ProductsList.FirstOrDefault(p => p.Id == id);
+            return _dbContext.Products;
+        }
+
+        public Product? GetProductDetail(int id)
+        {
+            return _dbContext.Products.FirstOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Product> GetTrendingProducts()
         {
-            return ProductsList.Where(p => p.IsTrendingProduct == true);
+            return _dbContext.Products.Where(p => p.IsTrendingProduct == true);
         }
     }
 }
 
+
 ```
 **Register Services/Repository in IOC Container**
-program.cs
+
+`program.cs`
 ```c#
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 ```
 
+1. **DbContext & DbSet**
+Add new file `Data/CoffeeShopDbContext.cs`
+```c#
+using CoffeeShop.Models;
+using Microsoft.EntityFrameworkCore;
 
+namespace CoffeeShop.Data
+{
+    public class CoffeeShopDbContext : DbContext
+    {
+        public CoffeeShopDbContext(DbContextOptions<CoffeeShopDbContext> options) : base(options) {}
 
-
-
+        public DbSet<Product> Products { get; set; }
+    }
+}
+```
+2. **Create Database Connection String to `appsettings.json`**
+```c#
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "CoffeeShopDbContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=CoffeeShopDb;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+```
+3. **The database context is registered with the Dependency Injection container in the Program.cs file:**
+```c#
+// Add DbContext
+builder.Services.AddDbContext<CoffeeShopDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeShopDbContextConnection")));
+```
+4. Create your first migration
+```c#
+Add-Migration InitialCreate
+```
 
 
 
