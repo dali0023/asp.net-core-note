@@ -6,7 +6,12 @@
    > `Microsoft.EntityFrameworkCore`
    > `Microsoft.EntityFrameworkCore.SqlServer`
    > `Microsoft.EntityFrameworkCore.Tools`
+- Add Repository Pattern
 - DbContext(Database) and DbSet(Table)
+- Connection String to `appsettings.json`
+- Register DbContext in Program.cs file:**
+
+**1. Add a data model class:**
    
 ```c#
 using System.ComponentModel.DataAnnotations;
@@ -24,47 +29,8 @@ public class Movie
     public bool IsTrendingProduct { get; set;}
 }
 ```
-### Then you will need to create the `Context class` derived from the `DbContext`
-```c#
-public class AppContext : DbContext
-{
-    public AppContext(DbContextOptions<AppContext> options)
-        : base(options)
-    { }
 
-    public DbSet<Blog> Blogs { get; set; }
-    public DbSet<Post> Posts { get; set; }
-}
-```
-
-### Register the `Dependency Injection` in your application startup.
-```c#
-public void ConfigureServices(IServiceCollection services)
-{
-    services.Configure<CookiePolicyOptions>(options =>
-    {
-        // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-        options.CheckConsentNeeded = context => true;
-        options.MinimumSameSitePolicy = SameSiteMode.None;
-    });
-
-    var connection = "Server=localhost;Port=5432;Database=Test;User Id=postgres;Password=postgres;";
-    services.AddDbContext<AppContext>(options => options.UseNpgsql(connection));
-
-    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-}
-```
-**For PostgreSQL**
-```c#
-services.AddDbContext<AppContext>(options => options.UseNpgsql(connection));
-
-// For MySQL
-services.AddDbContext<AppContext>(options => options.UseMySql(connection));
-// Or For SQL Server
-services.AddDbContext<AppContext>(options => options.UseSqlServer(connection));
-```
-
-## Repository Pattern Logic:
+**2.1:  Repository Pattern Logic:**
 **Create an `Interface` for the repository inside the `Models/Interfaces`**
 `Models/Interfaces/IProductRepository.cs`
 ```c#
@@ -78,7 +44,8 @@ namespace CoffeeShop.Models.Interfaces
     }
 }
 ```
-**Create an `Class` for the repository inside the `Models/Repositories`**
+
+**2.2:  Create an `Class` for the repository inside the `Models/Repositories`**
 `Models/Repositories/ProductRepository.cs`
 ```c#
 using CoffeeShop.Data;
@@ -114,16 +81,14 @@ namespace CoffeeShop.Models.Repositories
 
 
 ```
-**Register Services/Repository in IOC Container**
-
-`program.cs`
+**2.3  Register Services/Repository in IOC Container in `program.cs`**
 ```c#
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 ```
 
-1. **DbContext & DbSet**
+**3. DbContext & DbSet**
 Add new file `Data/CoffeeShopDbContext.cs`
 ```c#
 using CoffeeShop.Models;
@@ -134,26 +99,26 @@ namespace CoffeeShop.Data
     public class CoffeeShopDbContext : DbContext
     {
         public CoffeeShopDbContext(DbContextOptions<CoffeeShopDbContext> options) : base(options) {}
-
         public DbSet<Product> Products { get; set; }
     }
 }
 ```
-2. **Create Database Connection String to `appsettings.json`**
+**4. Create Database Connection String to `appsettings.json`**
 ```json
   "AllowedHosts": "*",
   "ConnectionStrings": {
     "CoffeeShopDbContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=CoffeeShopDb;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 ```
-3. **The database context is registered with the Dependency Injection container in the Program.cs file:**
+**5. The database context is registered with the Dependency Injection container in the Program.cs file:**
 ```c#
 // Add DbContext
 builder.Services.AddDbContext<CoffeeShopDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeShopDbContextConnection")));
 ```
-4. Create your first migration
+**6. Create your first migration**
 ```c#
 Add-Migration InitialCreate
+update-database
 ```
 
 
