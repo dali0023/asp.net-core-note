@@ -53,9 +53,7 @@ services.AddDbContext<AppContext>(options => options.UseNpgsql(connection));
 
 // For MySQL
 services.AddDbContext<AppContext>(options => options.UseMySql(connection));
-
 // Or For SQL Server
-
 services.AddDbContext<AppContext>(options => options.UseSqlServer(connection));
 ```
 
