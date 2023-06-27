@@ -15,6 +15,7 @@ public class Movie
     public DateTime ReleaseDate { get; set; }
     public string? Genre { get; set; }  // ? means null
     public decimal Price { get; set; }
+    public bool IsTrendingProduct { get; set;}
 }
 ```
 ### Then you will need to create the `Context class` derived from the `DbContext`
@@ -57,5 +58,59 @@ services.AddDbContext<AppContext>(options => options.UseMySql(connection));
 services.AddDbContext<AppContext>(options => options.UseSqlServer(connection));
 ```
 
+## Repository Pattern Logic:
+**Create an `Interface` for the repository inside the `Models/Interfaces`**
+`Models/Interfaces/IProductRepository.cs`
+```c#
+namespace CoffeeShop.Models.Interfaces
+{
+    public interface IProductRepository
+    {
+        IEnumerable<Product> GetAllProducts();
+        IEnumerable<Product> GetTrendingProducts();
+        Product GetProductDetail(int id);
 
+    }
+}
+```
+**Create an `Class` for the repository inside the `Models/Repositories`**
+`Models/Repositories/ProductRepository.cs`
+```c#
+using CoffeeShop.Models.Interfaces;
+
+namespace CoffeeShop.Models.Repositories
+{
+    public class ProductRepository : IProductRepository
+    {
+        public IEnumerable<Product> GetAllProducts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product GetProductDetail(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Product> GetTrendingProducts()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
