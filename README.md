@@ -83,9 +83,9 @@ namespace CoffeeShop.Models.Repositories
     {
         private List<Product> ProductsList = new List<Product>()
         {
-            new Product { Id = 1, Name= "America", Price=25, Detail="It is a long established fact that a reader will be distracted by the readable content of a page", ImageUrl="https://coffeeassoc.com/wp-content/uploads/2021/07/nathan-dumlao-6VhPY27jdps-unsplash-1-scaled.jpg", IsTrendingProduct=true},
-            new Product { Id = 2, Name= "Bangladesh", Price=10, Detail="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form", ImageUrl="https://www.tastingtable.com/img/gallery/coffee-brands-ranked-from-worst-to-best/l-intro-1645231221.jpg", IsTrendingProduct=true},
-            new Product { Id = 3, Name= "Canada", Price=36, Detail="All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary", ImageUrl="https://www.allrecipes.com/thmb/8JjBB27QtpI_IQuU7MlU6RgrsEs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/coffee-grinds-falling-down-with-a-blue-cup-in-the-background.2x1-f54ba374d2eb47e090888101f54c218a.jpg", IsTrendingProduct=false}
+            new Product { Id = 1, Name= "America", Price=25, Detail="It is a long established fact ", ImageUrl="https://coffeeassoc.com/wp-content/uploads/2021/07/nathan-dumlao-6VhPY27jdps-unsplash-1-scaled.jpg", IsTrendingProduct=true},
+            new Product { Id = 2, Name= "Bangladesh", Price=10, Detail="There are many variations of passages", ImageUrl="https://www.tastingtable.com/img/gallery/coffee-brands-ranked-from-worst-to-best/l-intro-1645231221.jpg", IsTrendingProduct=true},
+            new Product { Id = 3, Name= "Canada", Price=36, Detail="All the Lorem Ipsum generators on the Internet ", ImageUrl="https://foolproofliving.com/wp-content/uploads/2019/03/Turkish-Coffee-Recipe-600x600.jpg", IsTrendingProduct=false}
         };
         public IEnumerable<Product> GetAllProducts()
         {
