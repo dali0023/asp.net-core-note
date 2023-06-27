@@ -163,7 +163,7 @@ namespace CoffeeShop.Controllers
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 ```
 
-**View: `Products/Shop.cshtml**
+**View: `Products/Shop.cshtml`**
 ```cshtml
 @model IEnumerable<Product>
 
@@ -178,13 +178,13 @@ namespace CoffeeShop.Controllers
     }
 ```
 
-**View: `Products/Detail.cshtml**
+**View: `Products/Detail.cshtml`**
 ```cshtml
 @model Product
-<h1>Coffee Shop</h1>
-
-<img src="@Model.ImageUrl" />
-<h3>@Model.Name</h3>
-<p>@Model.Detail</p>
-<p>@Model.Price.ToString()</p>
+   <h1>Coffee Shop</h1>
+   
+   <img src="@Model.ImageUrl" />
+   <h3>@Model.Name</h3>
+   <p>@Model.Detail</p>
+   <p>@Model.Price.ToString()</p>
 ```
