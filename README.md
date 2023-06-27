@@ -3,10 +3,8 @@
 # Model
 - Add a data model class
 - Install Packages:
-   > `Microsoft.EntityFrameworkCore`
-   
+   > `Microsoft.EntityFrameworkCore` 
    > `Microsoft.EntityFrameworkCore.SqlServer`
-   
    > `Microsoft.EntityFrameworkCore.Tools`
 - Add Repository Pattern
 - DbContext(Database) and DbSet(Table)
@@ -123,9 +121,71 @@ Add-Migration InitialCreate
 update-database
 ```
 
+## Controller:
+`ProductsController.cs`
+```c#
+using CoffeeShop.Models.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
+namespace CoffeeShop.Controllers
+{
+    public class ProductsController : Controller
+    {
+        private IProductRepository _productRepository;
+        public ProductsController(IProductRepository _productRepository)
+        {
+            this._productRepository = _productRepository;
+        }
+        public IActionResult Shop()
+        {
+            return View(_productRepository.GetAllProducts());
+        }
 
+        public IActionResult Detail(int id)
+        {
+            var product = _productRepository.GetProductDetail(id);
 
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+    }
+}
 
-  
+```
 
+## Add namespace and package in `_ViewImports.cshtml`
+```cshtml
+@using CoffeeShop
+@using CoffeeShop.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+```
+
+**View: `Products/Shop.cshtml**
+```cshtml
+@model IEnumerable<Product>
+
+    <h1>Coffee Shop</h1>
+    
+    @foreach (var item in Model)
+    {
+        <img height="100" width="100" src="@item.ImageUrl"/>
+        <h3>@item.Name</h3>
+        <p>@item.Price.ToString()</p>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Detail" asp-route-id="@item.Id">Details</a>
+    }
+```
+
+**View: `Products/Detail.cshtml**
+```cshtml
+@model Product
+
+    <h1>Coffee Shop</h1>
+
+    <img src="@Model.ImageUrl" />
+    <h3>@Model.Name</h3>
+    <p>@Model.Detail</p>
+    <p>@Model.Price.ToString()</p>
+```
