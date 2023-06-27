@@ -4,7 +4,9 @@
 - Add a data model class
 - Install Packages:
    > `Microsoft.EntityFrameworkCore`
+   
    > `Microsoft.EntityFrameworkCore.SqlServer`
+   
    > `Microsoft.EntityFrameworkCore.Tools`
 - Add Repository Pattern
 - DbContext(Database) and DbSet(Table)
