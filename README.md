@@ -112,7 +112,7 @@ namespace CoffeeShop.Data
     "CoffeeShopDbContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=CoffeeShopDb;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 ```
-**5. The database context is registered with the Dependency Injection container in the Program.cs file:**
+**5. The database context is registered with the Dependency Injection container in the `Program.cs` file:**
 ```c#
 // Add DbContext
 builder.Services.AddDbContext<CoffeeShopDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeShopDbContextConnection")));
