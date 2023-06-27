@@ -51,11 +51,11 @@ public void ConfigureServices(IServiceCollection services)
 ```c#
 services.AddDbContext<AppContext>(options => options.UseNpgsql(connection));
 ```
-**MySQL**
+**For MySQL**
 ```c#
 services.AddDbContext<AppContext>(options => options.UseMySql(connection));
 ```
-**Or SQL Server**
+**Or For SQL Server**
 ```c#
 services.AddDbContext<AppContext>(options => options.UseSqlServer(connection));
 ```
