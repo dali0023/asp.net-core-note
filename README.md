@@ -105,8 +105,13 @@ namespace CoffeeShop.Models.Repositories
 }
 
 ```
-**Register Services in IOC Container**
-
+**Register Services/Repository in IOC Container**
+program.cs
+```c#
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+```
 
 
 
