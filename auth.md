@@ -17,7 +17,7 @@ app.UseAuthorization();
 **Right Click on Project Folder and select `Build`**
 
 **Migration: **
-```
+```C#
 add-migration IdentityAdded
 update-database
 ```
@@ -27,6 +27,6 @@ update-database
 - Select Project's DbContext and whatever I want, for basic `Login, logout, register`
 
 **Edit `Program.cs` from `true` to `false`**
-```
+```C#
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<CoffeeShopDbContext>();
 ```
