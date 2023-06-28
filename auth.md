@@ -3,7 +3,7 @@ Install Package:
 - `Microsoft.AspNetCore.Identity.EntityFrameworkCore`
 - `Microsoft.AspNetCore.Identity.UI`
 
-**Change from `CoffeeShopDbContext : DbContext` To `CoffeeShopDbContext : IdentityDbContext`**
+**Change `Data/CoffeeShopDbContext` files from `CoffeeShopDbContext : DbContext` To `CoffeeShopDbContext : IdentityDbContext`**
 ```C#
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 public class CoffeeShopDbContext : IdentityDbContext {
