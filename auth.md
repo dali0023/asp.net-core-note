@@ -6,9 +6,7 @@ Install Package:
 **Change `Data/CoffeeShopDbContext` files from `CoffeeShopDbContext : DbContext` To `CoffeeShopDbContext : IdentityDbContext`**
 ```C#
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-public class CoffeeShopDbContext : IdentityDbContext {
-
-}
+public class CoffeeShopDbContext : IdentityDbContext { }
 ```
 **Also Add below code to `Program.cs`**
 ```C#
