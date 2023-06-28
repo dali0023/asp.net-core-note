@@ -14,11 +14,19 @@ app.UseAuthentication();
 app.UseAuthorization();
 ```
 
-**Right Click on Project Folder and select Build**
+**Right Click on Project Folder and select `Build`**
 
-**Migration: `add-migration IdentityAdded`**
+**Migration: **
+```
+add-migration IdentityAdded
+update-database
+```
 
+**Add Scaffolded Item**
+- Right Click on Project Folder and Add > New Scaffolded Item> Identity > Add
+- Select Project's DbContext and whatever I want, for basic `Login, logout, register`
 
-
-
-
+**Edit `Program.cs` from `true` to `false`**
+```C#
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<CoffeeShopDbContext>();
+```
