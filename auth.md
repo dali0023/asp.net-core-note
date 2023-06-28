@@ -15,6 +15,7 @@ app.UseAuthorization();
 ```
 
 **Right Click on Project Folder and select Build**
+
 **Migration: `add-migration IdentityAdded`**
 
 
