@@ -40,7 +40,7 @@ app.UseSession();
 // End added session
 ```
 **Also add `MapRazorPages()` under UseStaticFiles()**
-```
+```c#
 app.UseStaticFiles();
 app.MapRazorPages();
 ```
