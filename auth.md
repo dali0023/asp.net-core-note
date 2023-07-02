@@ -66,8 +66,9 @@ else
        <a asp-area="Identity" asp-page="/Account/Login">Login</a>
 }
 </ul>
-
+```
 **Also Add `<partial name="_LoginPartial"></partial>` to `'/Views/Shared/_Layout.cshtml'`**
+
 ```cshtml
 <ul>
   <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
