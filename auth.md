@@ -58,32 +58,20 @@ app.MapRazorPages();
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-        <li class="nav-item dropdown">
-            <a class="nav-link link text-black dropdown-toggle show display-4" data-toggle="dropdown-submenu" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span></a>
-            <div class="dropdown-menu show" aria-labelledby="dropdown-751" data-bs-popper="none">
-                <a class="text-black show dropdown-item display-4" asp-area="Identity" asp-page="/Account/Logout">Logout</a>
-            </div>
-        </li>
+        <a class="text-black show dropdown-item display-4" asp-area="Identity" asp-page="/Account/Logout">Logout</a>
 }
 else
 {
-        <li class="nav-item dropdown">
-            <a class="nav-link link text-black dropdown-toggle show display-4" data-toggle="dropdown-submenu" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><span class="mobi-mbri mobi-mbri-user-2 mbr-iconfont mbr-iconfont-btn"></span></a>
-            <div class="dropdown-menu show" aria-labelledby="dropdown-751" data-bs-popper="none">
-                <a class="text-black show dropdown-item display-4" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                <a class="text-black show dropdown-item display-4" asp-area="Identity" asp-page="/Account/Login">Login</a>
-            </div>
-        </li>
+       <a class="text-black show dropdown-item display-4" asp-area="Identity" asp-page="/Account/Register">Register</a>
+       <a class="text-black show dropdown-item display-4" asp-area="Identity" asp-page="/Account/Login">Login</a>
 }
 </ul>
 
 **also Add `<partial name="_LoginPartial"></partial>` to `'/Views/Shared/_Layout.cshtml'`**
 ```cshtml
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
           <li class="nav-item"><a class="nav-link link text-black show display-4" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
           <partial name="_LoginPartial"></partial>
-      </ul>
-</div>
+</ul>
 ```
 
