@@ -45,7 +45,7 @@ app.UseStaticFiles();
 app.MapRazorPages();
 ```
 Add `'Scripts'` to `'/Views/Shared/_Layout.cshtml'`
-```
+```cshtml
 @await RenderSectionAsync("Scripts", false)
 ```
 
