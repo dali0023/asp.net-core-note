@@ -70,8 +70,8 @@ else
 **Also Add `<partial name="_LoginPartial"></partial>` to `'/Views/Shared/_Layout.cshtml'`**
 ```cshtml
 <ul>
-          <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-          <partial name="_LoginPartial"></partial>
+  <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+  <partial name="_LoginPartial"></partial>
 </ul>
 ```
 
