@@ -39,12 +39,15 @@ var app = builder.Build();
 app.UseSession();
 // End added session
 ```
-Also add `MapRazorPages()` under UseStaticFiles()
+**Also add `MapRazorPages()` under UseStaticFiles()**
 ```
 app.UseStaticFiles();
 app.MapRazorPages();
 ```
-
+Add `'Scripts'` to `'/Views/Shared/_Layout.cshtml'`
+```
+@await RenderSectionAsync("Scripts", false)
+```
 
 
 
