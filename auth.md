@@ -58,19 +58,19 @@ app.MapRazorPages();
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
-        <a class="text-black show dropdown-item display-4" asp-area="Identity" asp-page="/Account/Logout">Logout</a>
+        <a asp-area="Identity" asp-page="/Account/Logout">Logout</a>
 }
 else
 {
-       <a class="text-black show dropdown-item display-4" asp-area="Identity" asp-page="/Account/Register">Register</a>
-       <a class="text-black show dropdown-item display-4" asp-area="Identity" asp-page="/Account/Login">Login</a>
+       <a asp-area="Identity" asp-page="/Account/Register">Register</a>
+       <a asp-area="Identity" asp-page="/Account/Login">Login</a>
 }
 </ul>
 
-**also Add `<partial name="_LoginPartial"></partial>` to `'/Views/Shared/_Layout.cshtml'`**
+**Also Add `<partial name="_LoginPartial"></partial>` to `'/Views/Shared/_Layout.cshtml'`**
 ```cshtml
-<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-          <li class="nav-item"><a class="nav-link link text-black show display-4" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+<ul>
+          <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
           <partial name="_LoginPartial"></partial>
 </ul>
 ```
