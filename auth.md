@@ -29,4 +29,24 @@ update-database
 **Edit `Program.cs` from `true` to `false`**
 ```C#
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<CoffeeShopDbContext>();
+
+// Start Adding Session
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddRazorPages();
+
+var app = builder.Build();
+app.UseSession();
+// End added session
 ```
+Also add `MapRazorPages()` under UseStaticFiles()
+```
+app.UseStaticFiles();
+app.MapRazorPages();
+```
+
+
+
+
+
+
