@@ -5,7 +5,7 @@
 }
 
 // Access Specifier: public, protected, private
-// Return Type: A method may return a value(int, string, bool), If the method is not returning any values, then the return type is **void**.
+// Return Type: A method may return a value(int, string, bool), If the method returns nothing, return type is **void**.
 
 ```
 
