@@ -112,14 +112,21 @@ Console.WriteLine(b.ToString());
 int j = 10;
 
 if (j == 10) {
-  Console.WriteLine("I get printed");
+  Console.WriteLine("Yes");
 } else if (j > 10) {
-  Console.WriteLine("I don't");
+  Console.WriteLine("No");
 } else {
-  Console.WriteLine("I also don't");
+  Console.WriteLine("Both");
 }
 ```
+**Short Hand If...Else:**
+`variable = (condition) ? expressionTrue :  expressionFalse;`
 
+```c#
+int time = 20;
+string result = (time < 18) ? "day." : "evening.";
+Console.WriteLine(result);
+```
 
 
 
