@@ -1,10 +1,12 @@
 
 ```c#
 class Hello {
-  // main method
   static void Main(string[] args)
   {
-    Console.WriteLine("Hello, world!");
+    int x= 20;
+    int y = 12;
+    Console.WriteLine("result is: " + (x+y));
+    Console.ReadLine();
   }
 }
 ```
