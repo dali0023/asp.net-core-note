@@ -214,23 +214,20 @@ foreach (var item in a)
 ```
 #### Add Custom Class Objects in List
 ```c#
-class Program {
-  public string Name;
-  public int Age;
-  public double Salary;
-  static void Main(string[] args)
-  {
-    var MyList = new List<Program>();
-    MyList.Add(new Program() { Name = "Nazmul", Age = 50, Salary = 3300 });
-    MyList.Add(new Program { Name = "Julian", Age = 22, Salary = 3500 });
-    MyList.Insert(1, new Program { Name = "Karon", Age = 23, Salary = 2500 });
-    
-    foreach (Program item in MyList)
+ class Program
     {
-      Console.WriteLine($"My Name is: {item.Name}, Age: {item.Age}, and Salary: {item.Salary}");
+        string color;
+        int num;
+        static void Main(string[] args)
+        {
+            List<Program> x = new List<Program>();
+            x.Add(new Program() { color= "Gold", num= 999}); 
+            foreach (var item in x)
+            {
+                Console.WriteLine(item.color + " " + item.num);
+            }
+        }
     }
-  }
-}
 ```
 ```c#
 // Add elements using object initializer syntax:
