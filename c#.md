@@ -241,6 +241,57 @@ foreach (Program item1 in studentList)
 }
 ```
 
+## OOP
+**Method and variable are two types:**
+1.	Static:
+   it’s global, don’t need to create object. From same class we can use it directly, but we need to give permission to declare it public for other class, but from other class we have call like.
+`className.staticVariableName`
+```c#
+namespace ConsoleApp4
+{
+    class Abc
+    {
+        public static string city = "Dhaka";
+        public static void country()
+        {
+            Console.WriteLine("I am from Abc");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(Abc.city);
+            Abc.country();
+            Console.ReadLine();
+        }
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
