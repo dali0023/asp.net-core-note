@@ -245,8 +245,10 @@ foreach (Program item1 in studentList)
 **Method and variable are two types:**
 
 **Static:**
-it’s global, don’t need to create object. From same class we can use it directly, but we need to give permission to declare it public for other class, but from other class we have call like.
-`className.staticVariableName`
+it’s global, don’t need to create object. From same class we can use it directly, but we need to give permission to declare it public for other class.
+
+**Non-Static:** we need to create object to access data.
+
 ```c#
 namespace ConsoleApp4
 {
@@ -263,7 +265,6 @@ namespace ConsoleApp4
             return 80; // Non Static Method
         }
     }
-
 
     class Program
     {
@@ -282,6 +283,11 @@ namespace ConsoleApp4
 
 ```
 
+#### Access Modifiers: 
+`Public:` it visibles the data, means we can use it from different class by creating instance.
+`Protected:` we can use it by inheritance.
+`Private:` Normally We cannot access private data from other classes. But if we want, we have to access, we need to follow Encapsulation. 
+**N: B: By Default A method or variable is Private.**
 
 
 
