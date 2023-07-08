@@ -50,7 +50,8 @@ namespace ConsoleApp4
     }
 }
 ```
-
+#### Method Overloading: 
+Same function but run according to parameters.
 ```c#
 class Program
     {
