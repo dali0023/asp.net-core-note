@@ -202,7 +202,7 @@ a.Add(70); b.Add("John Smith"); c.Add(7.90);
 List1.AddRange(10, 20, 0, 40); // add more value
 
 ```
-
+#### Add Custom Class Objects in List
 ```c#
 class Program {
   public string Name;
