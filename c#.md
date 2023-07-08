@@ -167,7 +167,35 @@ int[] mylist = {100, 200};
 bool[] answers = {true, false};
 ```
 
+#### Collections
+Why Collections, why not Array?
+•	Insert, Delete, removing data from Any Position.
+•	Array size is Fixed, but ArrayList is Auto-resizable.
 
+**Collection are two types:**
+1. Non-Generic collections: 
+•	Auto resize-able but not Type Safe.
+•	Ex: `Stack, Queue, LinkedList, SortedList, ArrayList, Hashtable`
+
+2. Generic collections:
+•	Auto resize-able and Also Type Safe.
+•	Ex: `List`
+
+```c#
+using System.Collections;
+ArrayList X = new ArrayList();
+
+IList X = new ArrayList(){100, "Two", 12.5, 20}; // using IList Interface
+ICollection x = new ArrayList(); // using ICollection Interface
+IEnumerable x = new ArrayList(); // using IEnumerable Interface
+
+X.Add(20);
+x.Remove("Ottawa"); //removes specified value
+X.Insert(1, 35); // Insert to specific position
+x.RemoveAt(1); //Removes specified index. 
+x.Clear(); // Removes All Elements
+
+```
 
 
 
