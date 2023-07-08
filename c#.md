@@ -7,7 +7,7 @@ class Hello {
     const int c = 10;
     var d = 12.2;
     string res = "result is: ";
-    Console.WriteLine( res+ (a+ b + c + d)); // result is: 34.2
+    Console.WriteLine( res + (a + b + c + d)); // result is: 34.2
     Console.ReadLine();
   }
 }
