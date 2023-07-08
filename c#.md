@@ -156,7 +156,16 @@ foreach(int num in numbers) {
   Console.WriteLine(num);
 }
 ```
+#### Arrays
+```c#
+char[] chars = new char[10];
+chars[0] = 'a';
+chars[1] = 'b';
 
+string[] letters = {"A", "B", "C"};
+int[] mylist = {100, 200};
+bool[] answers = {true, false};
+```
 
 
 
