@@ -49,8 +49,38 @@ namespace ConsoleApp4
         }
     }
 }
-
 ```
+
+```c#
+class Program
+    {
+        public static void country()
+        {
+            Console.WriteLine("Toronto");
+        }
+        public static string country2()
+        {
+            return "Arab";
+        }
+        public static string country2(string ab)
+        {
+            return ab;
+        }
+
+        public static string country2(string ab, string bc)
+        {
+            return ab + bc;
+        }
+        static void Main(string[] args)
+        {     
+            country(); // Toronto
+            Console.WriteLine(country2()); // Arab
+            Console.WriteLine(country2("Canada!")); // Canada!
+            Console.WriteLine(country2("US", " England")); // US England
+        }
+    }
+```
+
 
 #### Access Modifiers: 
 
