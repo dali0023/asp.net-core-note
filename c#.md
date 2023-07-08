@@ -107,7 +107,18 @@ Console.WriteLine(f.ToString());
 Console.WriteLine(d.ToString());
 Console.WriteLine(b.ToString());
 ```
+#### Conditionals:
+```c#
+int j = 10;
 
+if (j == 10) {
+  Console.WriteLine("I get printed");
+} else if (j > 10) {
+  Console.WriteLine("I don't");
+} else {
+  Console.WriteLine("I also don't");
+}
+```
 
 
 
