@@ -5,7 +5,8 @@ class Hello {
   {
     int x= 20;
     int y = 12;
-    Console.WriteLine("result is: " + (x+y)); // result is: 32
+    string res = "result is: ";
+    Console.WriteLine(res + (x+y)); // result is: 32
     Console.ReadLine();
   }
 }
