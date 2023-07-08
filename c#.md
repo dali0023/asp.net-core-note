@@ -204,25 +204,23 @@ List1.AddRange(10, 20, 0, 40); // add more value
 ```
 
 ```c#
-class Program
- {
+class Program {
   public string Name;
   public int Age;
   public double Salary;
   static void Main(string[] args)
   {
-   var MyList = new List<Program>();
-   MyList.Add(new Program() { Name = "Nazmul", Age = 50, Salary = 3300 });
-   MyList.Add(new Program { Name = "Julian", Age = 22, Salary = 3500 });
-   MyList.Insert(1, new Program { Name = "Karon", Age = 23, Salary = 2500 });
-
-   foreach (Program item in MyList)
-     {
-       Console.WriteLine($"My Name is: {item.Name}, Age: {item.Age}, and Salary: {item.Salary}");
-     }
+    var MyList = new List<Program>();
+    MyList.Add(new Program() { Name = "Nazmul", Age = 50, Salary = 3300 });
+    MyList.Add(new Program { Name = "Julian", Age = 22, Salary = 3500 });
+    MyList.Insert(1, new Program { Name = "Karon", Age = 23, Salary = 2500 });
+    
+    foreach (Program item in MyList)
+    {
+      Console.WriteLine($"My Name is: {item.Name}, Age: {item.Age}, and Salary: {item.Salary}");
+    }
   }
 }
-
 ```
 ```c#
 // Add elements using object initializer syntax:
