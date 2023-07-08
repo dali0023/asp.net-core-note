@@ -284,9 +284,10 @@ namespace ConsoleApp4
 ```
 
 #### Access Modifiers: 
-`Public:` it visibles the data, means we can use it from different class by creating instance.
-`Protected:` we can use it by inheritance.
-`Private:` Normally We cannot access private data from other classes. But if we want, we have to access, we need to follow Encapsulation. 
+
+**Public:** it visibles the data, means we can use it from different class by creating instance.
+**Protected:** we can use it by inheritance.
+**Private:** Normally We cannot access private data from other classes. But if we want, we have to access, we need to follow Encapsulation. 
 **N: B: By Default A method or variable is Private.**
 
 
