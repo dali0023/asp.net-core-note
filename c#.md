@@ -3,10 +3,11 @@
 class Hello {
   static void Main(string[] args)
   {
-    int x= 20;
-    int y = 12;
+    int a = 5, b = 7;
+    const int c = 10;
+    var d = 12.2;
     string res = "result is: ";
-    Console.WriteLine(res + (x+y)); // result is: 32
+    Console.WriteLine( res+ (a+ b + c + d)); // result is: 34.2
     Console.ReadLine();
   }
 }
@@ -19,7 +20,7 @@ class Hello {
 are the main built-in types and could be used to build other data types), Enum types, Struct types, Nullable value types.
 ```c#
 int myNum = 5; double myDouble = 5.25; float myFloatNum = 5.99f;
-string myText = "Hello";char myLetter = 'D'; bool myBool = true;
+string myText = "Hello"; char myLetter = 'D'; bool myBool = true;
 
 // Constant:
 const int myNum = 15;
