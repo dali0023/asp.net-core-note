@@ -129,14 +129,14 @@ Console.WriteLine(result);
 ```
 **Switch Statements**
 ```c#
-int day = 4;
+int day = 2;
 switch (day)
   {
-    case 6:
+    case 1:
     Console.WriteLine("Saturday.");
         break;
-    case 7:
-    Console.WriteLine("Today is Sunday.");
+    case 2:
+    Console.WriteLine("Sunday.");
         break;
     default:
     Console.WriteLine("Friday”)
