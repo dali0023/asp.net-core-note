@@ -99,6 +99,18 @@ Console.WriteLine(Convert.ToString(myBool)); // convert bool to string
 
 int i = 75;
 Console.WriteLine(i.ToString());
+
+
+// TryParse: Convert String and return true or false
+string myStr = "Dalim";
+bool res = int.TryParse(myStr, out int x);
+bool res = int.TryParse(myStr, out _);
+Console.WriteLine(res);); // T or F
+
+// Parse: Convert String:
+int x = Int32.Parse(Console.ReadLine());
+int y = 10;
+Console.WriteLine(x + y);
 ```
 #### Conditionals:
 ```c#
