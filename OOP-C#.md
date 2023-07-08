@@ -3,6 +3,10 @@
 <Access Specifier> <Return Type> <Method Name>(Parameter List) {
    Method Body
 }
+
+// Access Specifier: public, protected, private
+// Return Type: A method may return a value(int, string, bool), If the method is not returning any values, then the return type is **void**.
+
 ```
 
 
