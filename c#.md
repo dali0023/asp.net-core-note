@@ -177,10 +177,6 @@ Why Collections, why not Array?
 •	Auto resize-able but not Type Safe.
 •	Ex: `Stack, Queue, LinkedList, SortedList, ArrayList, Hashtable`
 
-2. Generic collections:
-•	Auto resize-able and Also Type Safe.
-•	Ex: `List`
-
 ```c#
 using System.Collections;
 ArrayList X = new ArrayList();
@@ -194,11 +190,53 @@ x.Remove("Ottawa"); //removes specified value
 X.Insert(1, 35); // Insert to specific position
 x.RemoveAt(1); //Removes specified index. 
 x.Clear(); // Removes All Elements
+```
+2. Generic collections:
+•	Auto resize-able and Also Type Safe.
+•	Ex: `List`
+```c#
+List<int> a = new List<int>();
+List<string> b = new List<string>();
+List<double> c = new List<double>();
+a.Add(70); b.Add("John Smith"); c.Add(7.90);
+List1.AddRange(10, 20, 0, 40); // add more value
 
 ```
 
+```c#
+class Program
+ {
+  public string Name;
+  public int Age;
+  public double Salary;
+  static void Main(string[] args)
+  {
+   var MyList = new List<Program>();
+   MyList.Add(new Program() { Name = "Nazmul", Age = 50, Salary = 3300 });
+   MyList.Add(new Program { Name = "Julian", Age = 22, Salary = 3500 });
+   MyList.Insert(1, new Program { Name = "Karon", Age = 23, Salary = 2500 });
 
+   foreach (Program item in MyList)
+     {
+       Console.WriteLine($"My Name is: {item.Name}, Age: {item.Age}, and Salary: {item.Salary}");
+     }
+  }
+}
 
+```
+```c#
+// Add elements using object initializer syntax:
+IList<Program> studentList = new List<Program>() {
+    new Program(){ StudentID=1, StudentName="Bill"},
+    new Program(){ StudentID=2, StudentName="Steve"},
+    new Program(){ StudentID=3, StudentName="Ram"},
+    new Program(){ StudentID=1, StudentName="Moin"}
+};
+foreach (Program item1 in studentList)
+{
+    Console.WriteLine(item1.StudentID +" "+ item1.StudentName);
+}
+```
 
 
 
