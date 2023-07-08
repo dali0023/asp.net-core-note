@@ -5,21 +5,16 @@ class Hello {
   {
     int x= 20;
     int y = 12;
-    Console.WriteLine("result is: " + (x+y));
+    Console.WriteLine("result is: " + (x+y)); // result is: 32
     Console.ReadLine();
   }
 }
 ```
-**Comments**
-```c#
-// Single-line comment
-/* Multi-line 
-   comment */
-```
 
 #### Types and variables:
 
-**Simple types / primitive Data Types:** `short, int, char, float, double` etc. (They are called primitive because they 
+**Simple types / primitive Data Types:** 
+`short, int, char, float, double` etc. (They are called primitive because they 
 are the main built-in types and could be used to build other data types), Enum types, Struct types, Nullable value types.
 ```c#
 int myNum = 5; double myDouble = 5.25; float myFloatNum = 5.99f;
