@@ -1,8 +1,9 @@
 ## Method:
+```c#
 <Access Specifier> <Return Type> <Method Name>(Parameter List) {
    Method Body
 }
-
+```
 
 
 **Method and variable are two types:**
