@@ -186,7 +186,7 @@ Why Collections, why not Array?
 using System.Collections;
 ArrayList X = new ArrayList();
 
-IList X = new ArrayList(){100, "Two", 12.5, 20}; // using IList Interface
+IList x = new ArrayList(){100, "Two", 12.5, 20}; // using IList Interface
 ICollection x = new ArrayList(); // using ICollection Interface
 IEnumerable x = new ArrayList(); // using IEnumerable Interface
 
@@ -195,6 +195,11 @@ x.Remove("Ottawa"); //removes specified value
 X.Insert(1, 35); // Insert to specific position
 x.RemoveAt(1); //Removes specified index. 
 x.Clear(); // Removes All Elements
+
+foreach (var item in x)
+{
+    Console.WriteLine(item);
+}
 ```
 2. Generic collections:
 •	Auto resize-able and Also Type Safe.
@@ -205,9 +210,15 @@ List<string> b = new List<string>();
 List<double> c = new List<double>();
 a.Add(70); b.Add("John Smith"); c.Add(7.90);
 List1.AddRange(10, 20, 0, 40); // add more value
-
 ```
 #### Add Custom Class Objects in List
+```c#
+List<int> x = new List<int>() { 80, 90, 100};
+foreach (var item in x)
+{
+    Console.WriteLine(item);
+}
+```
 ```c#
 class Program {
   public string Name;
