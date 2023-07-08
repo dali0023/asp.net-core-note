@@ -8,7 +8,37 @@
 // Return Type: A method may return a value(int, string, bool), If the method returns nothing, return type is **void**.
 
 ```
+#### Method Overloading: 
+Same function but run according to parameters.
+```c#
+class Program
+    {
+        public static void country()
+        {
+            Console.WriteLine("Toronto");
+        }
+        public static string country2()
+        {
+            return "Arab";
+        }
+        public static string country2(string ab)
+        {
+            return ab;
+        }
 
+        public static string country2(string ab, string bc)
+        {
+            return ab + bc;
+        }
+        static void Main(string[] args)
+        {     
+            country(); // Toronto
+            Console.WriteLine(country2()); // Arab
+            Console.WriteLine(country2("Canada!")); // Canada!
+            Console.WriteLine(country2("US", " England")); // US England
+        }
+    }
+```
 
 **Method and variable are two types:**
 
@@ -50,38 +80,6 @@ namespace ConsoleApp4
     }
 }
 ```
-#### Method Overloading: 
-Same function but run according to parameters.
-```c#
-class Program
-    {
-        public static void country()
-        {
-            Console.WriteLine("Toronto");
-        }
-        public static string country2()
-        {
-            return "Arab";
-        }
-        public static string country2(string ab)
-        {
-            return ab;
-        }
-
-        public static string country2(string ab, string bc)
-        {
-            return ab + bc;
-        }
-        static void Main(string[] args)
-        {     
-            country(); // Toronto
-            Console.WriteLine(country2()); // Arab
-            Console.WriteLine(country2("Canada!")); // Canada!
-            Console.WriteLine(country2("US", " England")); // US England
-        }
-    }
-```
-
 
 #### Access Modifiers: 
 
