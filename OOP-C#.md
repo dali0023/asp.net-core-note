@@ -47,7 +47,6 @@ it’s global, don’t need to create object. From same class we can use it dire
 
 **Non-Static:** we need to create object to access data.
 
-## OOP
 ```c#
 namespace ConsoleApp4
 {
