@@ -206,19 +206,13 @@ foreach (var item in x)
 •	Ex: `List`
 ```c#
 List<int> a = new List<int>();
-List<string> b = new List<string>();
-List<double> c = new List<double>();
-a.Add(70); b.Add("John Smith"); c.Add(7.90);
-List1.AddRange(10, 20, 0, 40); // add more value
-```
-#### Add Custom Class Objects in List
-```c#
-List<int> x = new List<int>() { 80, 90, 100};
-foreach (var item in x)
+a.Add(70);
+foreach (var item in a)
 {
     Console.WriteLine(item);
 }
 ```
+#### Add Custom Class Objects in List
 ```c#
 class Program {
   public string Name;
