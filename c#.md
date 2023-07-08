@@ -252,22 +252,34 @@ namespace ConsoleApp4
 {
     class Abc
     {
-        public static string city = "Dhaka";
+        public static string city = "Dhaka"; // Static Variable
+        public int phone = 999; // Non Static Variable
         public static void country()
         {
             Console.WriteLine("I am from Abc");
         }
+        public int numbers()
+        {
+            return 80; // Non Static Method
+        }
     }
+
+
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Abc.city);
-            Abc.country();
+            Console.WriteLine(Abc.city); // Static Variable doesn't need object instance
+            Abc.country(); // Static Method doesn't need object instance
+
+            Abc abc1 = new Abc();
+            Console.WriteLine(abc1.phone); // object needs for non-static
+            Console.WriteLine(abc1.numbers());
             Console.ReadLine();
         }
     }
 }
+
 ```
 
 
