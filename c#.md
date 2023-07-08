@@ -15,11 +15,8 @@ class Hello {
    comment */
 ```
 
-**Variables**
-
 **Types and variables:**
-There are two kinds of types in C#:
-**Value types:**
+
 **Simple types / primitive Data Types:** `short, int, char, float, double` etc. (They are called primitive because they 
 are the main built-in types and could be used to build other data types), Enum types, Struct types, Nullable value types.
 ```c#
