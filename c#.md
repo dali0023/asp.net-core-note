@@ -127,7 +127,22 @@ int time = 20;
 string result = (time < 18) ? "day." : "evening.";
 Console.WriteLine(result);
 ```
-
+**Switch Statements**
+```c#
+int day = 4;
+switch (day)
+  {
+    case 6:
+    Console.WriteLine("Saturday.");
+        break;
+    case 7:
+    Console.WriteLine("Today is Sunday.");
+        break;
+    default:
+    Console.WriteLine("Friday”)
+        break;
+  }
+```
 
 
 
