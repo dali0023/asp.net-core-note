@@ -15,7 +15,7 @@ class Hello {
    comment */
 ```
 
-**Types and variables:**
+#### Types and variables:
 
 **Simple types / primitive Data Types:** `short, int, char, float, double` etc. (They are called primitive because they 
 are the main built-in types and could be used to build other data types), Enum types, Struct types, Nullable value types.
@@ -65,7 +65,7 @@ class Program
     }
 ```
 
-**Type Casting**
+#### Type Casting
 
 **Implicit Casting (automatically)** - converting a smaller type to a larger type size.
 `char -> int -> long -> float -> double`
@@ -87,7 +87,7 @@ double -> float -> long -> int -> char
  double total = (double) math/english; // 6.3456788
  int total1 = (int) total; //6
 ```
-**Type Conversion Methods**
+#### Type Conversion Methods
 ```c#
 int myInt = 10;
 double myDouble = 5.25;
