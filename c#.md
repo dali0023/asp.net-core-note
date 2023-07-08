@@ -69,7 +69,7 @@ class Program
 
 **Implicit Casting (automatically)** - converting a smaller type to a larger type size.
 ```c#
-char -> int -> long -> float -> double
+`char -> int -> long -> float -> double`
 int myInt = 9;
 double myDouble = myInt; // Automatic casting: int to double
 ```
