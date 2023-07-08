@@ -65,7 +65,28 @@ class Program
     }
 ```
 
+**Type Casting**
 
+**Implicit Casting (automatically)** - converting a smaller type to a larger type size.
+```c#
+char -> int -> long -> float -> double
+int myInt = 9;
+double myDouble = myInt; // Automatic casting: int to double
+```
+
+**Explicit Casting (manually)** - converting a larger type to a smaller size type.
+double -> float -> long -> int -> char
+```c#
+ double myDouble = 9.78;
+ int myInt = (int)myDouble; // Manual casting: double to int
+
+ Console.WriteLine(myDouble); // Outputs 9.78
+ Console.WriteLine(myInt); // Outputs 9
+
+ int math = 70; english = 11;
+ double total = (double) math/english; // 6.3456788
+ int total1 = (int) total; //6
+```
 
 
 
