@@ -35,7 +35,9 @@ Console.WriteLine(x + y + z);
 var collage = "Algonquin"; var year = 2020; var TuitionFees = 34670.50;
 ```
 
-**Reference types:** `Class types, Interface types, Array types, Delegate types, Object`: You can assign values of any type to variables of type object.
+**Reference types:** 
+
+`Class types, Interface types, Array types, Delegate types, Object`: You can assign values of any type to variables of type object.
 
 ```c#
 Class Ref: Properties, Methods, Events, etc.
