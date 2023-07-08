@@ -75,7 +75,7 @@ double myDouble = myInt; // Automatic casting: int to double
 ```
 
 **Explicit Casting (manually)** - converting a larger type to a smaller size type.
-double -> float -> long -> int -> char
+`double -> float -> long -> int -> char`
 ```c#
  double myDouble = 9.78;
  int myInt = (int)myDouble; // Manual casting: double to int
