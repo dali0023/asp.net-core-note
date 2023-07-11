@@ -50,6 +50,36 @@
    - Explicit Loading in EF Core
    - Lazy Loading in EF Core
 
+## 6	Persisting the Data:
+   - Save Changes in Entity Framework Core
+   - ChangeTracker, EntityEntry & Entity States
+   - Add Records/Add Multiple Records
+   - Update Record
+   - Delete Record
+   - Cascade Delete in Entity Framework Core
+
+## 7	Migrations:
+ - EF Core Migrations
+ - Reverse Engineer Database (Database First)
+ - EF Core Data Seeding to the Database
+ - EF Core Script Migration
+
+8	Others:
+ - Logging in EF Core
+ - Using MySQL & MariaDB in Entity Framework Core
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
