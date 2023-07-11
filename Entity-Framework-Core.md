@@ -119,6 +119,15 @@ namespace efcore2.Models
     }
 }
 ```
+****Register Model Class to Database `Data/TestDbContext.cs`**
+public class TestDbContext : DbContext
+    {
+        public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
+        
+        // Register All Model Class to Database
+        public DbSet<Movie> Movies { get; set; }
+    }
+        
 **Create your first migration**
 ```c#
 Add-Migration InitialCreate
@@ -126,8 +135,40 @@ update-database
 ```
 
 
+## Migration
 
+```c#
+// To unapply a specific migration(s):
+dotnet ef database update LastGoodMigrationName
+or
+PM> Update-Database -Migration LastGoodMigrationName
 
+// To unapply all migrations:
+
+dotnet ef database update 0
+or
+PM> Update-Database -Migration 0
+
+// To remove last migration:
+
+dotnet ef migrations remove
+or
+PM> Remove-Migration
+
+// To remove all migrations:
+
+just remove Migrations folder.
+
+To remove last few migrations (not all):
+
+There is no a command to remove a bunch of migrations and we can't just remove these few migrations and their *.designer.cs files since we need to keep the snapshot file in the consistent state. We need to remove migrations one by one (see To remove last migration above).
+
+// To unapply and remove last migration:
+
+dotnet ef migrations remove --force
+or
+PM> Remove-Migration -Force
+```
 
 
 
