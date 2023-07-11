@@ -33,7 +33,22 @@
   - HasAlternateKey
   - EntityType Configuration
 
+## 4. Configuring the Relationships:
+   - Relationships & Navigational Properties
+   - One to One Relationships
+   - One to Many Relationships
+   - Many to Many Relationships
 
+## 5. Querying in EF Core:
+   - Querying in Entity Framework Core
+   - First, FirstOrDefault, Single, SingleOrDefault in EF Core
+   - EF Core Find Method
+   - Projection Queries in EF Core
+   - EF Core Join Query
+   - Eager Loading using Include & ThenInclude in EF Core
+   - SelectMany in EF Core
+   - Explicit Loading in EF Core
+   - Lazy Loading in EF Core
 
 
 
