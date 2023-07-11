@@ -119,8 +119,11 @@ namespace efcore2.Models
     }
 }
 ```
-
-
+**Create your first migration**
+```c#
+Add-Migration InitialCreate
+update-database
+```
 
 
 
