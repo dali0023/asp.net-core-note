@@ -100,9 +100,38 @@ namespace efcore2.Data
 builder.Services.AddDbContext<TestDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("TestDbContextConnection")));
 ```
 
+**Add a data model class:**
+`Create model> add-migration>Update-Database`
+```c#
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
+namespace efcore2.Models
+{
+    [Table("tbl_Movies")] // change Table Name
+    public class Movie
+    {
+        public int Id { get; set; } // Primary key must be Id or ClassNameId(MovieId)
+        
+        [Required]
+        [MaxLength(50), MinLength(10)]
+        [Column("Title")] // change Column Name
+        public string? Movie_Title { get; set; } //  ? means null value also allow
+        
+        [DataType(DataType.Date)]
+        public DateTime ReleaseDate { get; set; }
+        public string? Genre { get; set; }
+        public decimal Price { get; set; }
+        public bool IsTrendingProduct { get; set; }
 
+        // Set Foreign Key
+        [ForeignKey("Category")]
+        public int Category_Id { get; set; }
+        public Category Category { get; set; }
 
+    }
+}
+```
 
 
 
