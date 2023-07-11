@@ -70,8 +70,16 @@
 
 
 
+## 1. 
+`Microsoft.EntityFrameworkCore`, `Microsoft.EntityFrameworkCore.SqlServer`,  `Microsoft.EntityFrameworkCore.Tools`, `Microsoft.EntityFrameworkCore.Design`
 
-
+Create Database Connection String to `appsettings.json`
+```json
+"AllowedHosts": "*",
+  "ConnectionStrings": {
+    "CoffeeShopDbContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=DatabaseName;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+```
 
 
 
