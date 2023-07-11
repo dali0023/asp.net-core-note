@@ -111,7 +111,7 @@ namespace efcore2.Models
     [Table("tbl_Movies")] // change Table Name
     public class Movie
     {
-        public int Id { get; set; } // Primary key must be Id or ClassNameId(MovieId)
+        public int Id { get; set; } // Primary key must be Id or ClassNameId ( MovieId )
         
         [Required]
         [MaxLength(50), MinLength(10)]
