@@ -1,11 +1,11 @@
-## Entity Framework Core 
+# Entity Framework Core 
 
-#### 1.	Connecting to Database:
+## 1.	Connecting to Database:
    - Database Connection String
    - DBContext
    - DbSet
 
-#### 2. Configuring the Model: 
+## 2. Configuring the Model: 
 `Create Model>Add Migration>Apply Migration`
 
 **Configure Using Conventions:**
@@ -27,7 +27,11 @@
   - Required Attribute
   - InverseProperty Attribute
 
-
+## 3. Configure Using Fluent API:
+  - Fluent API Entity Framework Core
+  - Ignore Method
+  - HasAlternateKey
+  - EntityType Configuration
 
 
 
