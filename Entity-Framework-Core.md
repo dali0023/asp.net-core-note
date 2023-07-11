@@ -119,7 +119,7 @@ namespace efcore2.Models
     }
 }
 ```
-****Register Model Class to Database `Data/TestDbContext.cs`**
+**Register Model Class to Database `Data/TestDbContext.cs`**
 ```c#
 public class TestDbContext : DbContext
     {
