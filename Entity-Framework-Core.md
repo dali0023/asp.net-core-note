@@ -70,7 +70,7 @@
 
 
 
-## 1. 
+## 1. Connecting to Database:
 `Microsoft.EntityFrameworkCore`, `Microsoft.EntityFrameworkCore.SqlServer`,  `Microsoft.EntityFrameworkCore.Tools`, `Microsoft.EntityFrameworkCore.Design`
 
 **Create Database Connection String to `appsettings.json`**
