@@ -120,6 +120,7 @@ namespace efcore2.Models
 }
 ```
 ****Register Model Class to Database `Data/TestDbContext.cs`**
+```c#
 public class TestDbContext : DbContext
     {
         public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
@@ -127,6 +128,7 @@ public class TestDbContext : DbContext
         // Register All Model Class to Database
         public DbSet<Movie> Movies { get; set; }
     }
+```
         
 **Create your first migration**
 ```c#
