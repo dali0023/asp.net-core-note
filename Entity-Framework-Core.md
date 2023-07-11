@@ -7,8 +7,10 @@
 
 #### 2. Configuring the Model: 
 `Create Model>Add Migration>Apply Migration`
+
 **Configure Using Conventions:**
    - Code First Conventions in Entity Framework Core
+
 **Configure Using Data Annotations:**
   - Data Annotations in entity framework Core
   - Table Attribute
