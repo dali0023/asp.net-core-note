@@ -77,17 +77,28 @@
 ```json
 "AllowedHosts": "*",
   "ConnectionStrings": {
-    "CoffeeShopDbContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=DatabaseName;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "TestDbContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=DatabaseName;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 ```
-**The database context is registered with the Dependency Injection container in the Program.cs file:**
+
+**DbContext & DbSet Add new file `Data/TestDbContext.cs`**
 ```c#
-// Add DbContext
-builder.Services.AddDbContext<CoffeeShopDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("CoffeeShopDbContextConnection")));
+using Microsoft.EntityFrameworkCore;
+
+namespace efcore2.Data
+{
+    public class TestDbContext : DbContext
+    {
+        public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
+    }
+}
 ```
 
-
-
+**The database context is registered with the Dependency Injection container in the `Program.cs` file:**
+```c#
+// Add DbContext
+builder.Services.AddDbContext<TestDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("TestDbContextConnection")));
+```
 
 
 
