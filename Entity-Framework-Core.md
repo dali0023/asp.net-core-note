@@ -11,21 +11,8 @@
 **Configure Using Conventions:**
    - Code First Conventions in Entity Framework Core
 
-**Configure Using Data Annotations:**
-  - Data Annotations in entity framework Core
-  - Table Attribute
-  - Column Attribute
-  - Key Attribute
-  - ComplexType Attribute
-  - ConcurrencyCheck Attribute
-  - Timestamp Attribute
-  - Databasegenerated Attribute
-  - ForeignKey Attribute
-  - MaxLength / MinLength Attribute
-  - StringLength Attribute
-  - NotMapped Attribute
-  - Required Attribute
-  - InverseProperty Attribute
+**Configure Using Data Annotations / Entity Properties:**
+  - Table, Column, Key, ComplexType, ConcurrencyCheck, Timestamp, Databasegenerated, ForeignKey, MaxLength / MinLength, StringLength, NotMapped, Required, InverseProperty.
 
 ## 3. Configure Using Fluent API:
   - Fluent API Entity Framework Core
@@ -100,7 +87,7 @@ namespace efcore2.Data
 builder.Services.AddDbContext<TestDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("TestDbContextConnection")));
 ```
 
-**Add a data model class:**
+**Add Model and Configure Using Data Annotations / Entity Properties:**
 `Create model> add-migration>Update-Database`
 ```c#
 using System.ComponentModel.DataAnnotations;
