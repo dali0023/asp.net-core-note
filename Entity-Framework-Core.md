@@ -1,5 +1,26 @@
 # Entity Framework Core 
 
+# 1. Create N-Tier Architecture:
+•	Right Click `Project Soluation>Add>New Project>Search Class Library then Select> Class Library C#(.Net )`
+•	Rename `ProjectName_DataAccess`, `Delete Class1.cs`, `Add New Folder` inside on it called `Data`
+•	Create Another: `Right Click Project Soluation>Add>New Project>Search Class Library then Select> Class Library C# (.Net)`
+•	`Rename ProjectName_Model`, `Delete Class1.cs` and Move `Models Folder` from `Main Project` to `ProjectName_Model`, 
+Change NameSpace `ProjectName.ProjectName_Model` and chane name space in `HomeController, _ViewImport`, and `Model>ErrorViewModel.cs`.
+•	`Delete Models Folder` from Main Project
+•	Right click on `Main Project>Add> Project Reference> then select both`
+•	and `ProjectName_DataAccess>Add> Add Project Reference> then select only projectName_Model.`
+
+Install: 
+- Microsoft.EntityFrameworkCore
+Select only ProjectName And Project_Data_Access
+- Microsoft.EntityFrameworkCore.SqlServer
+- Microsoft.EntityFrameworkCore.Tools
+
+
+
+
+
+
 ## 1.	Connecting to Database:
    - Database Connection String
    - DBContext
