@@ -166,6 +166,10 @@ update-database
 
 
 ## Migration
+**For N-tier Structure migration, Select on Package Manager Console> Default Project-  ProjectName_DataAccess**
+```c#
+add-migration AddCategoryTableToDB
+```
 
 ```c#
 // To unapply a specific migration(s):
