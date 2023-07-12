@@ -367,6 +367,19 @@ Fluent API provides a number of important methods to configure entities and its 
 - **MapToStoredProcedures()**:Configures the entity type to use INSERT, UPDATE and DELETE stored procedures.
 - **ToTable()**:Configures the table name for the entity.
 
+**Property Configurations:**
+
+- **HasColumnAnnotation():**
+- **IsRequired():**
+- **IsConcurrencyToken():**
+- **IsOptional():**
+- **HasParameterName():**
+- **HasDatabaseGeneratedOption():**
+- **HasColumnOrder():**
+- **HasColumnType():**
+- **HasColumnName():**
+
+
 
 
 
