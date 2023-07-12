@@ -311,3 +311,39 @@ public class Publisher
     }
 ```
 
+```c#
+//    Book.cs
+public class Book
+    {
+        public int Id { get; set; }
+        [Required]
+        public string? Title { get; set; }
+        [Required]
+        public double Price { get; set; }
+
+        // Set Foreign Key
+        [ForeignKey("Publisher")]
+        public int PublisherId { get; set; }
+        public Publisher? Publisher { get; set; }
+
+        public ICollection<BookInAuthor> BookInAuthor { get; set; }
+    }
+
+
+// Author.cs
+public class Author
+    {
+        public int Id { get; set; }
+        [Required]
+        public string? Name { get; set; }
+
+        [Required]
+        public DateTime BirthDate { get; set; }
+        public string? Location { get; set; }
+
+        [Required]
+        public double Price { get; set; }
+
+        // Add Reference for Many to Many Relationship
+        public ICollection<BookInAuthor> BookInAuthor { get; set; }
+```
