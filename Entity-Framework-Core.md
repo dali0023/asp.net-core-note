@@ -277,10 +277,37 @@ public class Publisher
 
 ```
 
+**Many to Many Relationships:**
 
+- Many books have many Authors
+- Create A Joint Table between Book And Author BookInAuthor
+```c
+    public class BookInAuthor
+    {
+        // Set Foreign Key
+        [ForeignKey("Book")]
+        public int BookId { get; set; }
+        public Book? Book { get; set; }
 
+        // Set Foreign Key
+        [ForeignKey("Author")]
+        public int AuthorId { get; set; }
+        public Author? Author { get; set; }
+    }
+```
+**Create a Composite Key on Data/TestDbContext.cs**
+```c##
+ public class TestDbContext : DbContext
+    {
+        public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
+        public DbSet<BookInAuthor> BookInAuthor { get; set; }
 
-   - Many to Many Relationships
-
-
+        // Write below code inside ApplicationDBContext
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Create primary key by using composite key   
+            modelBuilder.Entity<BookInAuthor>().HasKey(ba => new { ba.AuthorId, ba.BookId });
+        }
+    }
+```
 
