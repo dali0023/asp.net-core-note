@@ -206,7 +206,47 @@ or
 PM> Remove-Migration -Force
 ```
 
+## 4. Configuring the Relationships:
+   - Relationships & Navigational Properties
+**One to One Relationships:**
+```c#
+// Parent Class(Book.cs)
+public class Book
+    {
+        public int Id { get; set; }
+        [Required]
 
+         public string? Title { get; set; }
+        [Required]
+        public double Price { get; set; }
+
+        [NotMapped] // notmapped means this column wil not saved on table but can display
+        public string? PriceRange { get; set; }
+
+        // Set Foreign Key
+        [ForeignKey("BookDetail")]
+        public int BookDetailId { get; set; }
+        public BookDetail? BookDetail { get; set; }
+    }
+
+// Child Class (BookDetail)
+
+public class BookDetail
+    {
+        public int BookDetailId { get; set; }
+        public int NumberOfChapters { get; set; }
+        [Required]
+        public int NumberOfPages { get; set; }
+        public double Weight { get; set; }
+        public Book? Book { get; set; }
+
+    }
+```
+
+
+
+   - One to Many Relationships
+   - Many to Many Relationships
 
 
 
