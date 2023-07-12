@@ -296,7 +296,7 @@ public class Publisher
     }
 ```
 **Create a Composite Key on Data/TestDbContext.cs**
-```c##
+```c#
  public class TestDbContext : DbContext
     {
         public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
