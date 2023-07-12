@@ -246,7 +246,40 @@ public class BookDetail
 
 
 
-   - One to Many Relationships
+**One to Many Relationships:**
+```c#
+// One book has one Publisher
+public class Book
+    {
+        public int Id { get; set; }
+        [Required]
+        public string? Title { get; set; }
+        [Required]
+        public double Price { get; set; }
+
+        // Set Foreign Key
+        [ForeignKey("Publisher")]
+        public int PublisherId { get; set; }
+        public Publisher? Publisher { get; set; }
+    }
+
+// One Publisher has many books
+public class Publisher
+    {
+        public int Id { get; set; }
+        [Required]
+        public string? Name { get; set; }
+        [Required]
+        public string? Location { get; set; }
+
+        public List<Book>? Books { get; set; } // Also cas use Icollection<>, IList<> as many data
+    }
+
+```
+
+
+
+
    - Many to Many Relationships
 
 
