@@ -207,7 +207,8 @@ PM> Remove-Migration -Force
 ```
 
 ## 4. Configuring the Relationships:
-   - Relationships & Navigational Properties
+Relationships & Navigational Properties
+
 **One to One Relationships:**
 ```c#
 // Parent Class(Book.cs)
