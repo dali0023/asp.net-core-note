@@ -144,6 +144,8 @@ namespace efcore2.Models
         public int Category_Id { get; set; }
         public Category Category { get; set; }
 
+        [NotMapped] // NotMapped means this column will not saved on database table but can display on page
+        public string PriceRange { get; set; }
     }
 }
 ```
