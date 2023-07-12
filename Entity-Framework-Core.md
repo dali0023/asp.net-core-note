@@ -206,7 +206,7 @@ or
 PM> Remove-Migration -Force
 ```
 
-## 4. Configuring the Relationships:
+## 4. Configuring the Relationships    Using Data Anotation:
 Relationships & Navigational Properties
 
 **One to One Relationships:**
@@ -305,7 +305,7 @@ public class Publisher
         // Write below code inside ApplicationDBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Create primary key by using composite key   
+            // Create primary key by using composite key  
             modelBuilder.Entity<BookInAuthor>().HasKey(ba => new { ba.AuthorId, ba.BookId });
         }
     }
@@ -348,3 +348,42 @@ public class Author
         public ICollection<BookInAuthor> BookInAuthor { get; set; }
     }
 ```
+
+## Relationship Using Fluent API:
+
+Fluent API provides a number of important methods to configure entities and its properties:
+Model-wide Configurations:
+  - HasDefaultSchema()
+  - ComplexType()
+
+Entity Configurations:
+- **HasIndex()**:Configures the index property for the entity type.
+- HasKey():Configures the primary key property for the entity type.
+- HasMany():	Configures the Many relationship for one-to-many or many-to-many relationships.
+- HasOptional():Configures an optional relationship which will create a nullable foreign key in the database.
+- HasRequired():Configures the required relationship which will create a non-nullable foreign key column in the database.
+- Ignore():	Configures that the class or property should not be mapped to a table or column.
+- Map():Allows advanced configuration related to how the entity is mapped to the database schema.
+- MapToStoredProcedures():Configures the entity type to use INSERT, UPDATE and DELETE stored procedures.
+- ToTable():Configures the table name for the entity.
+
+
+
+
+```c#
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
