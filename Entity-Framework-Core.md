@@ -357,11 +357,11 @@ Fluent API provides a number of important methods to configure entities and its 
   - **ComplexType()**
 
 **Entity Configurations:**
-- **HasIndex()**:Configures the index property for the entity type.
-- **HasKey()**:Configures the primary key property for the entity type.
-- **HasMany()**:	Configures the Many relationship for one-to-many or many-to-many relationships.
+- **HasIndex()**:Configures the `index property` for the entity type.
+- **HasKey()**:Configures the `primary key` property for the entity type.
+- **HasMany()**:	Configures the `Many relationship` for one-to-many or many-to-many relationships.
 - **HasOptional()**:Configures an optional relationship which will create a nullable foreign key in the database.
-- **HasRequired()**:Configures the required relationship which will create a non-nullable foreign key column in the database.
+- **HasRequired()**:Configures the required relationship which will create a `non-nullable foreign key` column in the database.
 - **Ignore()**:	Configures that the class or property should not be mapped to a table or column.
 - **Map()**:Allows advanced configuration related to how the entity is mapped to the database schema.
 - **MapToStoredProcedures()**:Configures the entity type to use INSERT, UPDATE and DELETE stored procedures.
