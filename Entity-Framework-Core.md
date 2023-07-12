@@ -346,4 +346,5 @@ public class Author
 
         // Add Reference for Many to Many Relationship
         public ICollection<BookInAuthor> BookInAuthor { get; set; }
+    }
 ```
