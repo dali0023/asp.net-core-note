@@ -435,7 +435,7 @@ public class FluentBookDetail
 ```
 **Also write in TestDbContext**
 ```c#
-
+public DbSet<FluentBook> FluentBook { get; set; }
 public DbSet<FluentBookDetail> FluentBookDetails { get; set; }
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
