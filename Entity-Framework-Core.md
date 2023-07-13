@@ -457,12 +457,80 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
+#### One To Many Relationship
+```c#
+// One book has one Publisher
+public class Book
+    {
+        public int Id { get; set; }
+        [Required]
+        public string? Title { get; set; }
+        [Required]
+        public double Price { get; set; }
 
+        // Set Foreign Key
+        [ForeignKey("Publisher")]
+        public int PublisherId { get; set; }
+        public Publisher? Publisher { get; set; }
+    }
 
+// One Publisher has many books
+public class Publisher
+    {
+        public int Id { get; set; }
+        [Required]
+        public string? Name { get; set; }
+        [Required]
+        public string? Location { get; set; }
 
+        public List<Book>? Books { get; set; } // Also cas use Icollection<>, IList<> as many data
+    }
+```
 
+#### One To Many Relationship Using Fluent Api
+```c#
+public class FluentBook
+    {
+        public int Id { get; set; }
+        public string? Title { get; set; }
 
+        // Set Foreign Key
+        public int PublisherId { get; set; }
+        public FluentPublisher? FluentPublisher { get; set; }
+    }
 
+public class FluentPublisher
+    {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public string? Location { get; set; }
+        public List<FluentBook>? FluentBooks { get; set; }
+    }
+```
+**Also write in TestDbContext**
+```c#
+public DbSet<FluentBook> FluentBook { get; set; }
+public DbSet<FluentPublisher> FluentPublisher { get; set; }
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+   // Book
+   modelBuilder.Entity<FluentBook>().HasKey(b => b.Id);
+   modelBuilder.Entity<FluentBook>().Property(b => b.Title).IsRequired();
+   modelBuilder.Entity<FluentBook>().Property(b => b.ISBN).IsRequired().HasMaxLength(30);
+   modelBuilder.Entity<FluentBook>().Property(b => b.Price).IsRequired();
+   
+   // Publisher
+   modelBuilder.Entity<FluentPublisher>().HasKey(b => b.Id);
+   modelBuilder.Entity<FluentPublisher>().Property(b => b.Name).IsRequired();
+   modelBuilder.Entity<FluentPublisher>().Property(b => b.Location).IsRequired();
+
+  // One to Many relationship betwen Book and Publisher
+  modelBuilder.Entity<FluentBook>().HasOne(b => b.FluentPublisher)
+                                     .WithMany(c => c.FluentBooks)
+                                     .HasForeignKey(fk => fk.Id);
+
+}
+```
 
 
 
