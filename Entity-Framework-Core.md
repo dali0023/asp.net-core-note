@@ -380,7 +380,7 @@ Fluent API provides a number of important methods to configure entities and its 
 - **HasColumnName():**
 
 
-## Example
+## One To One Relationship using Data Annotation and Fluent Api
 ```c#
 // using data annotation
     public class Book
