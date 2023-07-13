@@ -383,6 +383,20 @@ Fluent API provides a number of important methods to configure entities and its 
 ## Example
 ```c#
 // using data annotation
+    public class Book
+    {
+        public int Id { get; set; }
+        [Required]
+        public string? Title { get; set; }
+        [NotMapped] // notmapped means this column wil not saved on table but can display
+        public string? PriceRange { get; set; }
+
+        // Set Foreign Key
+        [ForeignKey("BookDetail")]
+        public int BookDetailId { get; set; }
+        public BookDetail? BookDetail { get; set; }
+    }
+
 public class BookDetail
     {
         public int BookDetailId { get; set; }
@@ -396,22 +410,49 @@ public class BookDetail
 ```
 **Same Table using Fluent Api**
 ```c#
+public class FluentBook
+    {
+        public int Id { get; set; }
+        public string? Title { get; set; }
+        public string? PriceRange { get; set; }
+
+        // Set Foreign Key
+        public int BookDetailId { get; set; }
+        public FluentBookDetail? FluentBookDetail { get; set; }
+    }
+
+// FluentBookDetail
 public class FluentBookDetail
     {
         public int BookDetailId { get; set; }
         public int NumberOfChapters { get; set; }
         public int NumberOfPages { get; set; }
         public double Weight { get; set; }
-
+        
+        // Set Reference
+        public FluentBook? FluentBook { get; set; }
     }
 
 // Also write in TestDbContext
 public DbSet<FluentBookDetail> FluentBookDetails { get; set; }
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
+   // Book
+   modelBuilder.Entity<FluentBook>().HasKey(b => b.Id);
+   modelBuilder.Entity<FluentBook>().Property(b => b.Title).IsRequired();
+   modelBuilder.Entity<FluentBook>().Property(b => b.ISBN).IsRequired().HasMaxLength(30);
+   modelBuilder.Entity<FluentBook>().Property(b => b.Price).IsRequired();
+   
    //BookDetails
    modelBuilder.Entity<FluentBookDetail>().HasKey(b => b.BookDetailId); // create primary key
    modelBuilder.Entity<FluentBookDetail>().Property(b => b.NumberOfChapters).IsRequired(); // create required     
+    
+   //One to One Relationship Between FluentBook and FluentBookDetail
+   modelBuilder.Entity<FluentBook>()
+               .HasOne(b => b.FluentBookDetail)
+               .WithOne(b => b.FluentBook)
+               .HasForeignKey<FluentBook>(fk => fk.BookDetailId);
+
 }
 ```
 
