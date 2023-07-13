@@ -432,8 +432,10 @@ public class FluentBookDetail
         // Set Reference
         public FluentBook? FluentBook { get; set; }
     }
+```
+**Also write in TestDbContext**
+```c#
 
-// Also write in TestDbContext
 public DbSet<FluentBookDetail> FluentBookDetails { get; set; }
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -452,10 +454,8 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
                .HasOne(b => b.FluentBookDetail)
                .WithOne(b => b.FluentBook)
                .HasForeignKey<FluentBook>(fk => fk.BookDetailId);
-
 }
 ```
-
 
 
 
