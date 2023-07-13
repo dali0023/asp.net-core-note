@@ -393,8 +393,9 @@ public class BookDetail
         public Book? Book { get; set; }
 
     }
-
-// Same Table using Fluent Api
+```
+**Same Table using Fluent Api**
+```c#
 public class FluentBookDetail
     {
         public int BookDetailId { get; set; }
@@ -405,13 +406,13 @@ public class FluentBookDetail
     }
 
 // Also write in TestDbContext
-        public DbSet<FluentBookDetail> FluentBookDetails { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            //BookDetails
-            modelBuilder.Entity<FluentBookDetail>().HasKey(b => b.BookDetailId); // create primary key
-            modelBuilder.Entity<FluentBookDetail>().Property(b => b.NumberOfChapters).IsRequired(); // create required     
-        }
+public DbSet<FluentBookDetail> FluentBookDetails { get; set; }
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+   //BookDetails
+   modelBuilder.Entity<FluentBookDetail>().HasKey(b => b.BookDetailId); // create primary key
+   modelBuilder.Entity<FluentBookDetail>().Property(b => b.NumberOfChapters).IsRequired(); // create required     
+}
 ```
 
 
