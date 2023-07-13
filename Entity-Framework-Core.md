@@ -380,11 +380,38 @@ Fluent API provides a number of important methods to configure entities and its 
 - **HasColumnName():**
 
 
-
-
-
+## Example
 ```c#
+// using data annotation
+public class BookDetail
+    {
+        public int BookDetailId { get; set; }
+        public int NumberOfChapters { get; set; }
+        [Required]
+        public int NumberOfPages { get; set; }
+        public double Weight { get; set; }
+        public Book? Book { get; set; }
 
+    }
+
+// Same Table using Fluent Api
+public class FluentBookDetail
+    {
+        public int BookDetailId { get; set; }
+        public int NumberOfChapters { get; set; }
+        public int NumberOfPages { get; set; }
+        public double Weight { get; set; }
+
+    }
+
+// Also write in TestDbContext
+        public DbSet<FluentBookDetail> FluentBookDetails { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //BookDetails
+            modelBuilder.Entity<FluentBookDetail>().HasKey(b => b.BookDetailId); // create primary key
+            modelBuilder.Entity<FluentBookDetail>().Property(b => b.NumberOfChapters).IsRequired(); // create required     
+        }
 ```
 
 
