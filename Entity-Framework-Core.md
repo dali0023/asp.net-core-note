@@ -615,7 +615,7 @@ namespace TestNtier_DataAccess.Data
 }
 
 ```
-#### Create 
+#### Separate Configuration Classes
 **Create Folder on `TestNtier_DataAccess/FluentConfig/FluentPublisherConfig`**
 ```c#
 public class TestDbContext : DbContext
