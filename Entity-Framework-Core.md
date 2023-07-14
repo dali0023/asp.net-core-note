@@ -491,8 +491,11 @@ public class Publisher
 ```c#
 public class FluentBook
     {
-        public int Id { get; set; }
+        public int FluentBookId { get; set; }
         public string? Title { get; set; }
+        public string? ISBN { get; set; }
+        public double Price { get; set; }
+        public string? PriceRange { get; set; }
 
         // Set Foreign Key
         public int PublisherId { get; set; }
@@ -501,7 +504,7 @@ public class FluentBook
 
 public class FluentPublisher
     {
-        public int Id { get; set; }
+        public int FluentPublisherId { get; set; }
         public string? Name { get; set; }
         public string? Location { get; set; }
         public List<FluentBook>? FluentBooks { get; set; }
@@ -509,26 +512,27 @@ public class FluentPublisher
 ```
 **Also write in TestDbContext**
 ```c#
-public DbSet<FluentBook> FluentBook { get; set; }
-public DbSet<FluentPublisher> FluentPublisher { get; set; }
-protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
-   // Book
-   modelBuilder.Entity<FluentBook>().HasKey(b => b.Id);
-   modelBuilder.Entity<FluentBook>().Property(b => b.Title).IsRequired();
-   modelBuilder.Entity<FluentBook>().Property(b => b.ISBN).IsRequired().HasMaxLength(30);
-   modelBuilder.Entity<FluentBook>().Property(b => b.Price).IsRequired();
-   
-   // Publisher
-   modelBuilder.Entity<FluentPublisher>().HasKey(b => b.Id);
-   modelBuilder.Entity<FluentPublisher>().Property(b => b.Name).IsRequired();
-   modelBuilder.Entity<FluentPublisher>().Property(b => b.Location).IsRequired();
+public DbSet<FluentBook> FluentBooks { get; set; }
+public DbSet<FluentPublisher> FluentPublishers { get; set; }
 
-  // One to Many relationship betwen Book and Publisher
-  modelBuilder.Entity<FluentBook>().HasOne(b => b.FluentPublisher)
-                                     .WithMany(c => c.FluentBooks)
-                                     .HasForeignKey(fk => fk.Id);
-}
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // FluentBook
+            modelBuilder.Entity<FluentBook>().HasKey(b => b.FluentBookId);
+            modelBuilder.Entity<FluentBook>().Property(b => b.Title).IsRequired();
+            modelBuilder.Entity<FluentBook>().Property(b => b.ISBN).IsRequired().HasMaxLength(30);
+            modelBuilder.Entity<FluentBook>().Property(b => b.Price).IsRequired();
+
+            // FluentPublisher
+            modelBuilder.Entity<FluentPublisher>().HasKey(b => b.FluentPublisherId);
+            modelBuilder.Entity<FluentPublisher>().Property(b => b.Name).IsRequired();
+            modelBuilder.Entity<FluentPublisher>().Property(b => b.Location).IsRequired();
+
+            // One to Many relationship betwen Book and Publisher
+            modelBuilder.Entity<FluentBook>().HasOne(b => b.FluentPublisher)
+                        .WithMany(c => c.FluentBooks)
+                        .HasForeignKey(fk => fk.PublisherId);
+        }
 ```
 
 
