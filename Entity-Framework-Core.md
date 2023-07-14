@@ -536,6 +536,90 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         }
 ```
 
+## Many To Many Relationship
+```c#
+// FluentBook
+public class FluentBook
+    {
+        public int FluentBookId { get; set; }
+        public string? Title { get; set; }
+        public string? ISBN { get; set; }
+        public double Price { get; set; }
+        public string? PriceRange { get; set; }
+
+        // Many to many Relationship
+        public ICollection<FluentBookAuthor>? FluentBookAuthors { get; set; }
+    }
+
+// 
+public class FluentAuthor
+    {
+        public int FluentAuthorId { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
+
+        public ICollection<FluentBookAuthor>? FluentBookAuthors { get; set; }
+    }
+
+// FluentBookAuthor
+public class FluentBookAuthor
+    {
+        public int FluentBookId { get; set; }
+        public FluentBook? FluentBook { get; set; }
+
+        public int FluentAuthorId { get; set; }
+        public FluentAuthor? FluentAuthor { get; set; }
+    }
+
+```
+**Also write in Data/TestDbContext**
+```c#
+public DbSet<FluentBook> FluentBooks { get; set; }
+public DbSet<FluentAuthor>? FluentAuthors{ get; set; }
+public DbSet<FluentBookAuthor> FluentBookAuthors { get; set; }
+
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // FluentBook
+            modelBuilder.Entity<FluentBook>().HasKey(b => b.FluentBookId);
+            modelBuilder.Entity<FluentBook>().Property(b => b.Title).IsRequired();
+            modelBuilder.Entity<FluentBook>().Property(b => b.ISBN).IsRequired().HasMaxLength(30);
+            modelBuilder.Entity<FluentBook>().Property(b => b.Price).IsRequired();
+
+            // FluentAuthor
+            modelBuilder.Entity<FluentAuthor>().HasKey(b => b.FluentAuthorId);
+            modelBuilder.Entity<FluentAuthor>().Property(b => b.FirstName).IsRequired();
+            modelBuilder.Entity<FluentAuthor>().Ignore(b => b.FullName);
+
+            // Many to Many Relationship between Book and Author
+            
+            // Create primary key by using composite key   
+            modelBuilder.Entity<FluentBookAuthor>().HasKey(ba => new { ba.FluentAuthorId, ba.FluentBookId });
+            
+            // Double One To Many Relationship = many to many relationship
+            modelBuilder.Entity<FluentBookAuthor>()
+                        .HasOne(b => b.FluentBook)
+                        .WithMany(b => b.FluentBookAuthors)
+                        .HasForeignKey(fk => fk.FluentBookId);
+
+            modelBuilder.Entity<FluentBookAuthor>()
+                        .HasOne(b => b.FluentAuthor)
+                        .WithMany(b => b.FluentBookAuthors)
+                        .HasForeignKey(fk => fk.FluentAuthorId);
+
+        }
+```
+
+
+
 
 
 
