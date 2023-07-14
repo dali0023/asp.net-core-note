@@ -758,8 +758,103 @@ namespace TestNtier_DataAccess.Data
 }
 
 ```
+#### Create 
+**Create Folder on `TestNtier_DataAccess/FluentConfig/FluentPublisherConfig`**
+```c#
+public class TestDbContext : DbContext
+    {
+        public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
 
+        public DbSet<FluentBook> FluentBooks { get; set; }
+        public DbSet<FluentPublisher> FluentPublishers { get; set; }
+        public DbSet<FluentAuthor>? FluentAuthors{ get; set; }
+        public DbSet<FluentBookAuthor> FluentBookAuthors { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {         
+            modelBuilder.ApplyConfiguration(new FluentBookConfig()); // FluentBook
+            modelBuilder.ApplyConfiguration(new FluentBookDetailConfig()); //BookDetails
+            modelBuilder.ApplyConfiguration(new FluentPublisherConfig()); // FluentPublisher
+            modelBuilder.ApplyConfiguration(new FluentAuthorConfig()); // FluentAuthor
+            modelBuilder.ApplyConfiguration(new FluentBookAuthorConfig()); // FluentBookAuthor
+        }
+    }
+```
 
+**Move Code from `TestNtier_DataAccess/Data/TestDbContext` to `TestNtier_DataAccess/FluentConfig/FluentBookConfig.cs`**
+```c#
+// TestNtier_DataAccess/FluentConfig/FluentBookConfig.cs
+public class FluentBookConfig : IEntityTypeConfiguration<FluentBook>
+    {
+        public void Configure(EntityTypeBuilder<FluentBook> modelBuilder)
+        {
+            modelBuilder.HasKey(b => b.FluentBookId);
+            modelBuilder.Property(b => b.Title).IsRequired();
+            modelBuilder.Property(b => b.ISBN).IsRequired().HasMaxLength(30);
+            modelBuilder.Property(b => b.Price).IsRequired();
+
+            // One to One Relationship Between FluentBook and FluentBookDetail
+            modelBuilder.HasOne(b => b.FluentBookDetail)
+                        .WithOne(b => b.FluentBook)
+                        .HasForeignKey<FluentBook>(fk => fk.BookDetailId);
+
+            // One to Many relationship betwen Book and Publisher
+            modelBuilder.HasOne(b => b.FluentPublisher)
+                        .WithMany(c => c.FluentBooks)
+                        .HasForeignKey(fk => fk.PublisherId);
+        }
+    }
+
+// TestNtier_DataAccess/FluentConfig/FluentBookDetailConfig.cs
+public class FluentBookDetailConfig : IEntityTypeConfiguration<FluentBookDetail>
+    {
+        public void Configure(EntityTypeBuilder<FluentBookDetail> modelBuilder)
+        {
+            modelBuilder.HasKey(b => b.BookDetailId); // create primary key
+            modelBuilder.Property(b => b.NumberOfChapters).IsRequired(); // create required     
+        }
+    }
+
+// TestNtier_DataAccess/FluentConfig/FluentPublisherConfig.cs
+public class FluentPublisherConfig : IEntityTypeConfiguration<FluentPublisher>
+    {
+        public void Configure(EntityTypeBuilder<FluentPublisher> modelBuilder)
+        {
+            modelBuilder.HasKey(b => b.FluentPublisherId);
+            modelBuilder.Property(b => b.Name).IsRequired();
+            modelBuilder.Property(b => b.Location).IsRequired();
+        }
+    }
+```
+
+// TestNtier_DataAccess/FluentConfig/FluentAuthorConfig.cs
+public class FluentAuthorConfig : IEntityTypeConfiguration<FluentAuthor>
+    {
+        public void Configure(EntityTypeBuilder<FluentAuthor> modelBuilder)
+        {
+            modelBuilder.HasKey(b => b.FluentAuthorId);
+            modelBuilder.Property(b => b.FirstName).IsRequired();
+            modelBuilder.Ignore(b => b.FullName);
+        }
+    }
+
+// TestNtier_DataAccess/FluentConfig/FluentBookAuthorConfig.cs
+public class FluentBookAuthorConfig : IEntityTypeConfiguration<FluentBookAuthor>
+    {
+        public void Configure(EntityTypeBuilder<FluentBookAuthor> modelBuilder)
+        {
+            // Create primary key by using composite key   
+            modelBuilder.HasKey(ba => new { ba.FluentAuthorId, ba.FluentBookId });
+
+            // Double One To Many Relationship = many to many relationship
+            modelBuilder.HasOne(b => b.FluentBook)
+                        .WithMany(b => b.FluentBookAuthors)
+                        .HasForeignKey(fk => fk.FluentBookId);
+
+            modelBuilder.HasOne(b => b.FluentAuthor)
+                        .WithMany(b => b.FluentBookAuthors)
+                        .HasForeignKey(fk => fk.FluentAuthorId);
+        }
+    }
 
 
 
