@@ -404,7 +404,7 @@ public class BookDetail
         [Required]
         public int NumberOfPages { get; set; }
         public double Weight { get; set; }
-        public Book? Book { get; set; }
+        public Book? Book { get; set; } // Navigational Properties
 
     }
 ```
@@ -457,7 +457,8 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-#### One To Many Relationship
+### One To Many Relationship
+**One To Many Relationship Using Data Annotaion**
 ```c#
 // One book has one Publisher
 public class Book
@@ -474,7 +475,7 @@ public class Book
         public Publisher? Publisher { get; set; }
     }
 
-// One Publisher has many books
+// One Publisher can have many books
 public class Publisher
     {
         public int Id { get; set; }
@@ -487,7 +488,7 @@ public class Publisher
     }
 ```
 
-#### One To Many Relationship Using Fluent Api
+### One To Many Relationship Using Fluent Api
 ```c#
 public class FluentBook
     {
@@ -536,7 +537,21 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         }
 ```
 
-## Many To Many Relationship
+### Many To Many Relationship
+**Many to Many Relationship using Data Annotation**
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```c#
 // FluentBook
 public class FluentBook
