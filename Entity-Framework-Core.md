@@ -539,19 +539,64 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ### Many To Many Relationship
 **Many to Many Relationship using Data Annotation**
+```c#
+//    Book.cs
+public class Book
+    {
+        public int Id { get; set; }
+        [Required]
+        public string? Title { get; set; }
+        [Required]
+        public double Price { get; set; }
+
+        public ICollection<BookInAuthor> BookInAuthor { get; set; }
+    }
 
 
+// Author.cs
+public class Author
+    {
+        public int Id { get; set; }
+        [Required]
+        public string? Name { get; set; }
+        [Required]
+        public DateTime BirthDate { get; set; }
 
+        // Add Reference for Many to Many Relationship
+        public ICollection<BookInAuthor> BookInAuthor { get; set; }
+    }
 
+// BookInAuthor
+public class BookInAuthor
+    {
+        // Set Foreign Key
+        [ForeignKey("Book")]
+        public int BookId { get; set; }
+        public Book? Book { get; set; }
 
+        // Set Foreign Key
+        [ForeignKey("Author")]
+        public int AuthorId { get; set; }
+        public Author? Author { get; set; }
+    }
+```
+**Create a Composite Key on Data/TestDbContext.cs**
+```c#
+ public class TestDbContext : DbContext
+    {
+        public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
+        public DbSet<BookInAuthor> BookInAuthor { get; set; }
 
+        // Write below code inside ApplicationDBContext
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Create primary key by using composite key  
+            modelBuilder.Entity<BookInAuthor>().HasKey(ba => new { ba.AuthorId, ba.BookId });
+        }
+    }
+```
 
-
-
-
-
-
-
+**Many to Many Relationship using Fluent Api**
 ```c#
 // FluentBook
 public class FluentBook
