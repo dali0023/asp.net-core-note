@@ -529,7 +529,8 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
             modelBuilder.Entity<FluentPublisher>().Property(b => b.Location).IsRequired();
 
             // One to Many relationship betwen Book and Publisher
-            modelBuilder.Entity<FluentBook>().HasOne(b => b.FluentPublisher)
+            modelBuilder.Entity<FluentBook>()
+                        .HasOne(b => b.FluentPublisher)
                         .WithMany(c => c.FluentBooks)
                         .HasForeignKey(fk => fk.PublisherId);
         }
