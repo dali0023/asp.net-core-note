@@ -528,7 +528,6 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
   modelBuilder.Entity<FluentBook>().HasOne(b => b.FluentPublisher)
                                      .WithMany(c => c.FluentBooks)
                                      .HasForeignKey(fk => fk.Id);
-
 }
 ```
 
