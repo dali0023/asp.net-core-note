@@ -824,7 +824,6 @@ public class FluentPublisherConfig : IEntityTypeConfiguration<FluentPublisher>
             modelBuilder.Property(b => b.Location).IsRequired();
         }
     }
-```
 
 // TestNtier_DataAccess/FluentConfig/FluentAuthorConfig.cs
 public class FluentAuthorConfig : IEntityTypeConfiguration<FluentAuthor>
