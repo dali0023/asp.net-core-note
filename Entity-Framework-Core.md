@@ -25,9 +25,6 @@ Select only ProjectName And Project_Data_Access
 
 
 
-
-
-
 ## 1.	Connecting to Database:
    - Database Connection String
    - DBContext
@@ -678,8 +675,89 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         }
 ```
 
+## Organize Data/TestDbContext File:
+**Original Data/TestDbContext**
+```c#
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TestNtier_Model.Models;
+
+namespace TestNtier_DataAccess.Data
+{
+    public class TestDbContext : DbContext
+    {
+        public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
+
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<FluentBook> FluentBooks { get; set; }
+        public DbSet<FluentPublisher> FluentPublishers { get; set; }
+        public DbSet<FluentAuthor>? FluentAuthors{ get; set; }
+        public DbSet<FluentBookAuthor> FluentBookAuthors { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            // FluentBook
+            modelBuilder.Entity<FluentBook>().HasKey(b => b.FluentBookId);
+            modelBuilder.Entity<FluentBook>().Property(b => b.Title).IsRequired();
+            modelBuilder.Entity<FluentBook>().Property(b => b.ISBN).IsRequired().HasMaxLength(30);
+            modelBuilder.Entity<FluentBook>().Property(b => b.Price).IsRequired();
 
 
+            //BookDetails
+            modelBuilder.Entity<FluentBookDetail>().HasKey(b => b.BookDetailId); // create primary key
+            modelBuilder.Entity<FluentBookDetail>().Property(b => b.NumberOfChapters).IsRequired(); // create required     
+
+            //One to One Relationship Between FluentBook and FluentBookDetail
+            modelBuilder.Entity<FluentBook>()
+                        .HasOne(b => b.FluentBookDetail)
+                        .WithOne(b => b.FluentBook)
+                        .HasForeignKey<FluentBook>(fk => fk.BookDetailId);
+
+
+
+            // FluentPublisher
+            modelBuilder.Entity<FluentPublisher>().HasKey(b => b.FluentPublisherId);
+            modelBuilder.Entity<FluentPublisher>().Property(b => b.Name).IsRequired();
+            modelBuilder.Entity<FluentPublisher>().Property(b => b.Location).IsRequired();
+
+
+            // One to Many relationship betwen Book and Publisher
+            modelBuilder.Entity<FluentBook>().HasOne(b => b.FluentPublisher)
+                        .WithMany(c => c.FluentBooks)
+                        .HasForeignKey(fk => fk.PublisherId);
+
+
+            // Fluent Author
+            modelBuilder.Entity<FluentAuthor>().HasKey(b => b.FluentAuthorId);
+            modelBuilder.Entity<FluentAuthor>().Property(b => b.FirstName).IsRequired();
+            modelBuilder.Entity<FluentAuthor>().Ignore(b => b.FullName);
+
+            // Many to Many Relationship between Book and Author
+            
+            // Create primary key by using composite key   
+            modelBuilder.Entity<FluentBookAuthor>().HasKey(ba => new { ba.FluentAuthorId, ba.FluentBookId });
+            
+            // Double One To Many Relationship = many to many relationship
+            modelBuilder.Entity<FluentBookAuthor>()
+                        .HasOne(b => b.FluentBook)
+                        .WithMany(b => b.FluentBookAuthors)
+                        .HasForeignKey(fk => fk.FluentBookId);
+
+            modelBuilder.Entity<FluentBookAuthor>()
+                        .HasOne(b => b.FluentAuthor)
+                        .WithMany(b => b.FluentBookAuthors)
+                        .HasForeignKey(fk => fk.FluentAuthorId);
+
+        }
+    }
+}
+
+```
 
 
 
