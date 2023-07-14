@@ -855,6 +855,6 @@ public class FluentBookAuthorConfig : IEntityTypeConfiguration<FluentBookAuthor>
                         .HasForeignKey(fk => fk.FluentAuthorId);
         }
     }
-
+```
 
 
