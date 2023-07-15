@@ -423,13 +423,9 @@ public class Author
 // BookInAuthor
 public class BookInAuthor
     {
-        // Set Foreign Key
-        [ForeignKey("Book")]
         public int BookId { get; set; }
         public Book? Book { get; set; }
 
-        // Set Foreign Key
-        [ForeignKey("Author")]
         public int AuthorId { get; set; }
         public Author? Author { get; set; }
     }
