@@ -1,49 +1,27 @@
-1. HTTP
-2. Middleware
-3. Routing
-4. Controller & IActionResult
-5. Model Binding & Validations
-6. Razor Views
-7. Layout Views
-8. Partial Views
-9. **View Components**
+
+**View Components**
     - Pass data to views using several ways:
         - Strongly typed data: **ViewModel**
         - Weakly typed data: **ViewData**, **ViewBag**
 
-11. Dependency Injection
-12. Environments
-13. Configuration
-14. xUnit
-15. CRUD Operations
-16. Tag Helpers
-17. Entity Framework Core
-18. Unit Testing [Advanced, Moq & Repository Pattern]
-19. Logging & Serilog
-20. Filters
-21. Error Handling
-22. SOLID Principles
-23. Clean Architecture
-24. Identity, Authorization, Security
-25. Asp.Net Core Web API
-26. Swagger / Open API
-27. Angular and CORS
-28. JWT & Web API Authentication
-29. Minimal API (new feature)
+
+SOLID Principles
+Clean Architecture
 
 
 ## Fundamentals:
 - Application Startup
+- HTTP
 - Middleware
-- Working with Static Files
 - Routing
+- Static Files
 - Error Handling
 - Globalization and localization
 - Configuration
 - Options
 - Environments (dev, stage, prod)
 - HttpContext
-- Logging
+- Logging & Serilog
  🔧 File Providers
 - Dependency Injection
 - Working with Multiple Environments
@@ -51,7 +29,7 @@
 - Session and state management
 - Servers
 - Request Features
-- 
+- xUnit
 
 
 ## MVC
@@ -75,7 +53,7 @@
  - 🔧 Creating a Custom View Engine
 
 **Controllers**
- - Controllers, Actions, and Action Results
+ - Controllers, Actions, and IActionResult
  - 🔧 Routing to Controller Actions
  - Filters
  - Dependency Injection and Controllers
@@ -100,7 +78,7 @@
 - Controller-Based APIs
 - Minimal APIs
 ## Testing
- - Unit Testing
+ - Unit Testing [Advanced, Moq & Repository Pattern]
  - Integration Testing
  - Testing Controller Logic
 
