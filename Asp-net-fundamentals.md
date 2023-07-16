@@ -30,3 +30,23 @@
 27. Angular and CORS
 28. JWT & Web API Authentication
 29. Minimal API (new feature)
+
+
+## Fundamentals:
+- Application Startup
+- Middleware
+- Working with Static Files
+- Routing
+- Error Handling
+- Globalization and localization
+- Configuration
+- Logging
+ 🔧 File Providers
+- Dependency Injection
+- Working with Multiple Environments
+- Hosting
+- Managing Application State
+- Servers
+- Request Features
+- Open Web Interface for .NET (OWIN)
+- Choosing the Right .NET For You on the Server
