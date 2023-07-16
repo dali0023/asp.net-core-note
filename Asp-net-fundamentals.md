@@ -57,7 +57,7 @@
 ## MVC
 #### Overview of ASP.NET Core MVC
 **Models**
- - Model Binding
+ - Model Binding, Custom Model Binding
  - Model Validation
  - Formatting Response Data
  - 🔧 Custom Formatters
@@ -96,21 +96,36 @@
 - Web SDK
 - aspnet-codegenerator (Scaffolding)
 
-
+## Web APIs
+- Controller-Based APIs
+- Minimal APIs
 ## Testing
  - Unit Testing
  - Integration Testing
  - Testing Controller Logic
 
+## Servers
+- Kestrel vs. HTTP.sys
+- Hosting models
+- Kestrel
+- HTTP.sys
+
 ## Publishing and Deployment
 ## Guidance for Hosting Providers
-## Security
+## Security:
+- Authentication
+- Authorization
+- Data protection
+- HTTPS enforcement
+- Safe storage of app secrets in development
+- XSRF/CSRF prevention
+- Cross Origin Resource Sharing (CORS)
+- Cross-Site Scripting (XSS) attacks
 https://aspnetcore.readthedocs.io/en/stable/security/index.html
+https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
 
-
-
-
-
+## Performance
+## Globalization and localization
 
 
 
