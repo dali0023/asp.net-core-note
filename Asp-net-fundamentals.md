@@ -50,3 +50,49 @@
 - Request Features
 - Open Web Interface for .NET (OWIN)
 - Choosing the Right .NET For You on the Server
+
+## MVC
+#### Overview of ASP.NET Core MVC
+**Models**
+ - Model Binding
+ - Model Validation
+ - Formatting Response Data
+ - 🔧 Custom Formatters
+
+**Views**
+ - Views Overview
+ - Razor Syntax Reference
+ - Layout
+ - Working with Forms
+ - 🔧 HTML Helpers
+ - Tag Helpers
+ - Introduction to Tag Helpers
+ - Working with Forms
+ - Authoring Tag Helpers
+ - Partial Views
+ - Injecting Services Into Views
+ - View Components
+ - 🔧 Creating a Custom View Engine
+
+**Controllers**
+ - Controllers, Actions, and Action Results
+ - 🔧 Routing to Controller Actions
+ - Filters
+ - Dependency Injection and Controllers
+ - Testing Controller Logic
+ - Areas
+ - 🔧 Working with the Application Model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
