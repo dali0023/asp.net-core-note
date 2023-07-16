@@ -6,10 +6,10 @@
 6. Razor Views
 7. Layout Views
 8. Partial Views
-9. View Components
+9. **View Components**
     - Pass data to views using several ways:
-        - Strongly typed data: viewmodel
-        - Weakly typed data: ViewData (ViewDataAttribute), ViewBag
+        - Strongly typed data: **ViewModel**
+        - Weakly typed data: **ViewData**, **ViewBag**
 
 11. Dependency Injection
 12. Environments
