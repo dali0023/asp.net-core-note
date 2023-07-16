@@ -7,9 +7,9 @@
 7. Layout Views
 8. Partial Views
 9. View Components
-     - Pass data to views using several ways:
-     - Strongly typed data: viewmodel
-     - Weakly typed data: ViewData (ViewDataAttribute), ViewBag
+   Pass data to views using several ways:
+        - Strongly typed data: viewmodel
+        - Weakly typed data: ViewData (ViewDataAttribute), ViewBag
 
 11. Dependency Injection
 12. Environments
