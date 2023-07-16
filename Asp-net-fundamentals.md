@@ -40,16 +40,19 @@
 - Error Handling
 - Globalization and localization
 - Configuration
+- Options
+- Environments (dev, stage, prod)
+- HttpContext
 - Logging
  🔧 File Providers
 - Dependency Injection
 - Working with Multiple Environments
 - Hosting
-- Managing Application State
+- Session and state management
 - Servers
 - Request Features
-- Open Web Interface for .NET (OWIN)
-- Choosing the Right .NET For You on the Server
+- 
+
 
 ## MVC
 #### Overview of ASP.NET Core MVC
@@ -61,15 +64,12 @@
 
 **Views**
  - Views Overview
- - Razor Syntax Reference
- - Layout
+ - Razor Views, Layout, Partial Views, View Components
+ - Pass Data to View
  - Working with Forms
- - 🔧 HTML Helpers
- - Tag Helpers
- - Introduction to Tag Helpers
- - Working with Forms
+   - HTML Helpers
+   - Tag Helpers
  - Authoring Tag Helpers
- - Partial Views
  - Injecting Services Into Views
  - View Components
  - 🔧 Creating a Custom View Engine
@@ -83,9 +83,29 @@
  - Areas
  - 🔧 Working with the Application Model
 
+## Advanced
+- Application parts
+- Application model
+- Areas
+- Filters
+- Razor SDK
+- View components
+- View compilation
+- Display and Editor Templates
+- Upload files
+- Web SDK
+- aspnet-codegenerator (Scaffolding)
 
 
+## Testing
+ - Unit Testing
+ - Integration Testing
+ - Testing Controller Logic
 
+## Publishing and Deployment
+## Guidance for Hosting Providers
+## Security
+https://aspnetcore.readthedocs.io/en/stable/security/index.html
 
 
 
