@@ -110,14 +110,7 @@ https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
 - Application Startup
 - HTTP
 
-**Middleware:**
- - What is middleware
- - How middleware works
- - Where is middleware available in our apps
- - How to add a new middleware
- - Order of middleware
- - `Use()`, `Next()`, `Map()` Method
-
+#### Middleware:
 
 **Configure method of Startup.cs**
 ```c#
