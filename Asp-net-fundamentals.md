@@ -143,7 +143,7 @@ app.Run();
 ```
 
 **Middleware Chain/ Multiple Middleware:** run middleware one after other
-
+![Middleware Chain](middleware-chain.png)
 
 
 
