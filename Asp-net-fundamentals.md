@@ -109,6 +109,7 @@ https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
 ## Fundamentals:
 - Application Startup
 - HTTP
+
 **Middleware:**
  - What is middleware
  - How middleware works
