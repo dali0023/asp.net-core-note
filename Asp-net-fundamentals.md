@@ -207,6 +207,53 @@ app.Run(async (HttpContext context) =>
 app.Run();
 ```
 
+**Output:** Middleware-1  Custom Middleware  Starts  Last-Middleware  Ends of Custom Middleware
+
+**Custom Middleware Extensions:**
+```c#
+namespace Fundamentals.CustomMiddleware
+{
+    public class MyCustomMiddleware : IMiddleware
+    {
+        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+        {
+            await context.Response.WriteAsync("Custom Middleware  Starts ");
+            await next(context);
+            await context.Response.WriteAsync(" Ends of Custom Middleware");
+        }
+    }
+
+    // Create Extension Method for Custom Middleware
+    public static class CustomMiddlewareExtension
+    {
+        public static IApplicationBuilder MyCustomMiddleware (this IApplicationBuilder app)
+        {
+            return app.UseMiddleware<MyCustomMiddleware>();
+        }
+    }
+}
+```
+**Program.cs**
+```c#
+// For Multiple Middleware
+app.Use(async (HttpContext context, RequestDelegate next) =>
+{
+    await context.Response.WriteAsync("Middleware-1  ");
+    await next(context);
+});
+
+// Use Extension of Custom Middleware
+app.UseMyCustomMiddleware();
+
+// Last Middleware
+app.Run(async (HttpContext context) =>
+{
+    await context.Response.WriteAsync(" Last-Middleware ");
+});
+app.Run();
+```
+
+
 **Built-in middleware**
 
 - **Authentication Middleware:** This provides authentication functionality for the application, such as handling login and logout functionality.
