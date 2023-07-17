@@ -228,7 +228,7 @@ namespace Fundamentals.CustomMiddleware
     // Create Extension Method for Custom Middleware
     public static class CustomMiddlewareExtension
     {
-        public static IApplicationBuilder MyCustomMiddleware (this IApplicationBuilder app)
+        public static IApplicationBuilder UseMyCustomMiddleware (this IApplicationBuilder app)
         {
             return app.UseMiddleware<MyCustomMiddleware>();
         }
