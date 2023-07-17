@@ -127,15 +127,15 @@ https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
 
 
   
-- Routing
-- Static Files
-- Error Handling
-- Globalization and localization
-- Configuration
-- Options
-- Environments (dev, stage, prod)
-- HttpContext
-- Logging & Serilog
+Routing
+Static Files
+Error Handling
+Globalization and localization
+Configuration
+Options
+Environments (dev, stage, prod)
+HttpContext
+Logging & Serilog
  🔧 File Providers
 - Dependency Injection
 - Hosting
