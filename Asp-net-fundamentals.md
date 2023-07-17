@@ -164,23 +164,48 @@ app.Run(async (HttpContext context) =>
 app.Run();
 ```
 
+**Custom Middleware Class**
 
-<a href=https://youtu.be/8lGpZkjnkt4><img src=https://markdown-videos.vercel.app/youtube/8lGpZkjnkt4></a></img>
-<!-- blank line -->
-<figure class="video_container">
-  <iframe src="https://www.youtube.com/embed/enMumwvLAug" frameborder="0" allowfullscreen="true"> </iframe>
-</figure>
-<!-- blank line -->
+Create a file: `CustomMiddleware/MyCustomMiddleware.cs `
+```c#
+namespace Fundamentals.CustomMiddleware
+{
+    public class MyCustomMiddleware : IMiddleware
+    {
+        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+        {
+            await context.Response.WriteAsync("Custom Middleware  Starts ");
+            await next(context);
+            await context.Response.WriteAsync(" Ends of Custom Middleware");
+        }
+    }
+}
+```
+**Program.cs**
+```c#
+using Fundamentals.CustomMiddleware;
 
-<div align="left">
-      <a href="https://www.youtube.com/watch?v=5yLzZikS15k">
-         <img src="https://img.youtube.com/vi/5yLzZikS15k/0.jpg" style="width:100%;">
-      </a>
-</div>
+var builder = WebApplication.CreateBuilder(args);
+// Register Custom Middleware
+builder.Services.AddTransient<MyCustomMiddleware>();
 
+// For Multiple Middleware
+app.Use(async (HttpContext context, RequestDelegate next) =>
+{
+    await context.Response.WriteAsync("Middleware-1  ");
+    await next(context);
+});
 
+// Custom Middleware
+app.UseMiddleware<MyCustomMiddleware>();
 
-[![Everything Is AWESOME](https://i.stack.imgur.com/q3ceS.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+// Last Middleware
+app.Run(async (HttpContext context) =>
+{
+    await context.Response.WriteAsync(" Last-Middleware ");
+});
+app.Run();
+```
 
 **Built-in middleware**
 
