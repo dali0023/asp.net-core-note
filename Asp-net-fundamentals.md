@@ -119,6 +119,32 @@ https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
  - `Use()`, `Next()`, `Map()` Method
 
 **Configure method of Startup.cs**
+```c#
+// Create an instance of Web Application builder 
+var builder = WebApplication.CreateBuilder(args);
+
+// Create an instance of Web Application 
+var app = builder.Build();
+
+app.MapGet("/", () => "Hello World!");
+
+// set a basic middleware for all requests as did not mention a specific
+app.Run(async (HttpContext context) =>
+{
+    await context.Response.WriteAsync("Welcome to middlewre vai");
+});
+
+// To start the application
+app.Run();
+```
+
+**Middleware Chain/ Multiple Middleware:** run middleware one after other
+
+
+
+
+
+
 
 **Built-in middleware**
 
