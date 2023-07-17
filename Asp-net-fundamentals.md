@@ -253,10 +253,10 @@ app.Run();
 ```
 
 **UseWhen():**
-- url: https://localhost:7193/?username=hasan
+- url: https://localhost:7193/?anyname=hasan
 - Only works if condition meets, get data from url
 ```c#
-app.UseWhen(context => context.Request.Query.ContainsKey("username"), app =>
+app.UseWhen(context => context.Request.Query.ContainsKey("anyname"), app =>
 {
     app.Use(async (HttpContext context, RequestDelegate next) =>
     {
