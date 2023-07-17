@@ -118,9 +118,6 @@ https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
  - Order of middleware
  - `Use()`, `Next()`, `Map()` Method
 
-**Middleware Order**
-
-![Middleware Order](middleware.png)
 
 **Configure method of Startup.cs**
 ```c#
@@ -270,7 +267,24 @@ app.Run();
 - **HTTPS Redirection Middleware:** This redirects HTTP requests to HTTPS to ensure that sensitive data is transmitted securely.
 
 
+**Middleware Order**
 
+![Middleware Order](middleware.png)
+
+```c#
+app.UseExceptionHandler("/Error");
+app.UseHsts();
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseCors();
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseSession();
+app.MapControllers();
+//add your custom middlewares
+app.Run();
+```
   
 Routing
 Static Files
