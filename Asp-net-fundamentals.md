@@ -24,7 +24,6 @@ Clean Architecture
 - Logging & Serilog
  🔧 File Providers
 - Dependency Injection
-- Working with Multiple Environments
 - Hosting
 - Session and state management
 - Servers
@@ -105,7 +104,45 @@ https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
 ## Performance
 ## Globalization and localization
 
+######################################################################################################
+######################################################################################################
+## Fundamentals:
+- Application Startup
+- HTTP
+**Middleware:**
+ - What is middleware
+ - How middleware works
+ - Where is middleware available in our apps
+ - How to add a new middleware
+ - Order of middleware
+ - `Use()`, `Next()`, `Map()` Method
 
+
+
+
+
+
+
+
+
+
+  
+- Routing
+- Static Files
+- Error Handling
+- Globalization and localization
+- Configuration
+- Options
+- Environments (dev, stage, prod)
+- HttpContext
+- Logging & Serilog
+ 🔧 File Providers
+- Dependency Injection
+- Hosting
+- Session and state management
+- Servers
+- Request Features
+- xUnit
 
 
 
