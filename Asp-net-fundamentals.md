@@ -118,6 +118,8 @@ https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
  - Order of middleware
  - `Use()`, `Next()`, `Map()` Method
 
+**Middleware Order**
+
 ![Middleware Order](middleware.png)
 
 **Configure method of Startup.cs**
