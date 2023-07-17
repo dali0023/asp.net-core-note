@@ -145,7 +145,30 @@ app.Run();
 **Middleware Chain/ Multiple Middleware:** run middleware one after other
 ![Middleware Chain](middleware-chain.png)
 
+```c#
+// For Multiple Middleware
+// Middleware 1
+app.Use(async (HttpContext context, RequestDelegate next) =>
+{
+    await context.Response.WriteAsync("Middleware-1  ");
+    await next(context);
+});
 
+// MIddleware 2
+app.Use(async (HttpContext context, RequestDelegate next) =>
+{
+    await context.Response.WriteAsync("Middleware-2  ");
+    await next(context);
+});
+
+// Last Middleware
+app.Run(async (HttpContext context) =>
+{
+    await context.Response.WriteAsync(" Last-Middleware");
+});
+
+app.Run();
+```
 
 
 
