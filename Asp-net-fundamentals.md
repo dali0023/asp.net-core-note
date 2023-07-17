@@ -164,8 +164,8 @@ app.Run(async (HttpContext context) =>
 app.Run();
 ```
 
-<video src='https://www.youtube.com/watch?v=2Gw7PmZMqCQ&t=15s' width=180/>
 
+![]([my_video.mov](https://www.youtube.com/watch?v=2Gw7PmZMqCQ&t=15s))
 
 **Built-in middleware**
 
