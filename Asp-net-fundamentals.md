@@ -165,7 +165,7 @@ app.Run();
 ```
 
 
-![]([my_video.mov](https://www.youtube.com/watch?v=2Gw7PmZMqCQ&t=15s))
+![](https://www.youtube.com/watch?v=2Gw7PmZMqCQ&t=15s)
 
 **Built-in middleware**
 
