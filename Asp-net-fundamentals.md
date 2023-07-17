@@ -124,14 +124,6 @@ https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
 
 **Configure method of Startup.cs**
 ```c#
-// Create an instance of Web Application builder 
-var builder = WebApplication.CreateBuilder(args);
-
-// Create an instance of Web Application 
-var app = builder.Build();
-
-app.MapGet("/", () => "Hello World!");
-
 // set a basic middleware for all requests as did not mention a specific
 app.Run(async (HttpContext context) =>
 {
@@ -156,10 +148,11 @@ app.Use(async (HttpContext context, RequestDelegate next) =>
 });
 
 // MIddleware 2
-app.Use(async (HttpContext context, RequestDelegate next) =>
+// writing Type of (HttpContext, RequestDelegate) are optional.
+app.Use(async (context, next) =>
 {
     await context.Response.WriteAsync("Middleware-2  ");
-    await next(context);
+    await next(context); // next() called next middleware and without it middleware will not go to next one.
 });
 
 // Last Middleware
