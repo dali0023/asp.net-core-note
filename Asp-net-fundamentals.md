@@ -118,12 +118,20 @@ https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
  - Order of middleware
  - `Use()`, `Next()`, `Map()` Method
 
+**Configure method of Startup.cs**
 
+**Built-in middleware**
 
-
-
-
-
+- **Authentication Middleware:** This provides authentication functionality for the application, such as handling login and logout functionality.
+- **Static Files Middleware:** This serves static files, such as images, CSS, and JavaScript files, to the client.
+- **Routing Middleware:** This maps incoming requests to the appropriate action in a controller.
+- **Session Middleware:** This provides a way to store user-specific data between requests, such as user preferences or shopping cart contents.
+- **Error/Exception Handling Middleware:** This provides a way to handle exceptions that occur during request processing and produce a friendly error response.
+- **CORS (Cross-Origin Resource Sharing) Middleware:** This provides a way to handle cross-domain requests by allowing or denying specific origins.
+- **GZIP Compression Middleware:** This compresses the response payload to reduce the amount of data transferred over the network, improving performance.
+- **Cookie Policy**
+- **MVC middleware:**
+- **HTTPS Redirection Middleware:** This redirects HTTP requests to HTTPS to ensure that sensitive data is transmitted securely.
 
 
 
