@@ -252,6 +252,22 @@ app.Run(async (HttpContext context) =>
 app.Run();
 ```
 
+**UseWhen():**
+- url: https://localhost:7193/?username=hasan
+- Only works if condition meets, get data from url
+```c#
+app.UseWhen(context => context.Request.Query.ContainsKey("username"), app =>
+{
+    app.Use(async (HttpContext context, RequestDelegate next) =>
+    {
+        await context.Response.WriteAsync(" Run Middleware when condition meets from Url!  ");
+        await next(context);
+    });
+});
+```
+
+
+
 
 **Built-in middleware**
 
