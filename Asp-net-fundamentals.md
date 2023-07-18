@@ -320,7 +320,7 @@ app.MapControllerRoute(
 ```
 
 
-###### Attribute-based routing: 
+#### Attribute-based routing: 
 **One Way:**
 ```c#
     public class ContactController : Controller
@@ -360,7 +360,7 @@ app.MapControllerRoute(
     }
 ```
 
-###### Attribute Routing Tokens/ Dynamic
+#### Attribute Routing Tokens/ Dynamic
 ```c#
     [Route("[controller]/[action]")] // whatever controller and action we write on URL, it will run these actions.
     public class ContactController : Controller
@@ -379,7 +379,7 @@ app.MapControllerRoute(
     }
 ```
 
-##### Mixed Routing
+#### Mixed Routing
 
 **We can use both Conventional Routing and Attribute Routing**
 ```c#
