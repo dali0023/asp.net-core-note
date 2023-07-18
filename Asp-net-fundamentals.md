@@ -296,11 +296,31 @@ app.Run();
 ```
   
 ### Routing:
+- Conventional Routing: Controllers + Actions Methods.
+
+Url: `localhost/Home/Index`
+```c#
+    public class HomeController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
+```
+**Program.cs**
+```c#
+// localhost/createbook
+app.MapControllerRoute(
+    name: "addnewbook", // Route Name to use
+    pattern: "/createbook", // url
+    defaults: new {controller="Book", action="Index"}
+);
+
+```
 
 
-
-
-
+- Attribute-based routing: 
 
 
 
