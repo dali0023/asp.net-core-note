@@ -295,7 +295,24 @@ app.MapControllers();
 app.Run();
 ```
   
-Routing
+### Routing:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Static Files
 Error Handling
 Globalization and localization
