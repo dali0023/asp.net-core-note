@@ -322,12 +322,11 @@ app.MapControllerRoute(
 
 ###### Attribute-based routing: 
 **One Way:**
-Url: `localhost/create-contact`
-
-Url: `localhost/contact/create-contact`
 ```c#
     public class ContactController : Controller
     {
+        // localhost/create-contact
+        // localhost/contact/create-contact
        [Route("create-contact")]
        [Route("contact/create-contact")] // two url's will work or we can only use one
         public ActionResult Create()
