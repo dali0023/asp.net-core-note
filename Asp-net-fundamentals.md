@@ -110,9 +110,9 @@ https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-7.0
 - Application Startup
 - HTTP
 
-#### Middleware:
+### Middleware:
 
-**Configure method of Startup.cs**
+##### 1. Configure method of Startup.cs
 ```c#
 // set a basic middleware for all requests as did not mention a specific
 app.Run(async (HttpContext context) =>
@@ -154,7 +154,7 @@ app.Run(async (HttpContext context) =>
 app.Run();
 ```
 
-**Custom Middleware Class**
+##### 2. Custom Middleware Class:
 
 Create a file: `CustomMiddleware/MyCustomMiddleware.cs `
 ```c#
@@ -199,7 +199,7 @@ app.Run();
 
 **Output:** Middleware-1  Custom Middleware  Starts  Last-Middleware  Ends of Custom Middleware
 
-**Custom Middleware Extensions:**
+##### 3. Custom Middleware Extensions:
 
 `CustomMiddleware/MyCustomMiddleware.cs`
 ```c#
@@ -245,8 +245,8 @@ app.Run(async (HttpContext context) =>
 app.Run();
 ```
 
-**UseWhen():**
-- url: https://localhost:7193/?anyname=hasan
+##### UseWhen():
+- Url: https://localhost:7193/?anyname=hasan
 - Only works if condition meets, get data from url
 ```c#
 app.UseWhen(context => context.Request.Query.ContainsKey("anyname"), app =>
