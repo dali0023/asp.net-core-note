@@ -338,12 +338,22 @@ Url: `localhost/contact/create-contact`
 ```
 
 **Another Way:**
+1st Url: `https://localhost:7228/contact`
+2nd URL: `https://localhost:7228/contact/new-contact`
 
-`https://localhost:7228/contact/new-contact`
 ```c#
     [Route("contact")]  // when use `[Route("")]` in controller, we must have to use `[Route("")]` in actions also.
     public class ContactController : Controller
     {
+        [Route("")]
+        [Route("Index")]
+        [Route("/")]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+       // https://localhost:7228/contact/new-contact
        [Route("new-contact")]
         public ActionResult Create()
         {
