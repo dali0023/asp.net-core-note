@@ -360,10 +360,43 @@ app.MapControllerRoute(
     }
 ```
 
+###### Attribute Routing Tokens/ Dynamic
+```c#
+    [Route("[controller]/[action]")] // whatever controller and action we write on URL, it will run these actions.
+    public class ContactController : Controller
+    {
+        // https://localhost:7228/contact
+        public ActionResult Index()
+        {
+            return View();
+        }
 
+       // https://localhost:7228/contact/new-contact
+        public ActionResult Create()
+        {
+            return View();
+        }
+    }
+```
 
+###### Mixed Routing
 
-
+**We can use both Conventional Routing and Attribute Routing**
+```c#
+    [Route("[controller]/[action]")]
+    public class BookController : Controller
+    {
+        // https://localhost:7228/Book/Index
+        // https://localhost:7228/Book
+        [Route("")]
+        [Route("Index")]
+        [Route("/")]
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+```
 
 
 
