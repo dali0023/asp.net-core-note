@@ -296,7 +296,7 @@ app.Run();
 ```
   
 ### Routing:
-- Conventional Routing: Controllers + Actions Methods.
+###### Conventional Routing: Controllers + Actions Methods.
 
 Url: `localhost/Home/Index`
 ```c#
@@ -310,20 +310,45 @@ Url: `localhost/Home/Index`
 ```
 **Program.cs**
 ```c#
-// localhost/createbook
+// localhost/create-book
 app.MapControllerRoute(
     name: "addnewbook", // Route Name to use
     pattern: "/createbook", // url
-    defaults: new {controller="Book", action="Index"}
+    defaults: new {controller="Book", action="Create"}
 );
 
 ```
 
 
-- Attribute-based routing: 
+###### Attribute-based routing: 
+**One Way:**
+Url: `localhost/create-contact`
+```c#
+    public class ContactController : Controller
+    {
+       [Route("create-contact")]
+       [Route("book/create-contact")] // two url's will work or we can only use one
+        public ActionResult Create()
+        {
+            return View();
+        }
+    }
+```
 
+**Another Way:**
 
-
+`https://localhost:7228/contact/new-contact`
+```c#
+    [Route("contact")]  // when we use `[Route("contact")]` in controller, we must have to use `[Route("new-contact")]` in actions also.
+    public class ContactController : Controller
+    {
+       [Route("new-contact")]
+        public ActionResult Create()
+        {
+            return View();
+        }
+    }
+```
 
 
 
