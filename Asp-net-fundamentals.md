@@ -323,11 +323,13 @@ app.MapControllerRoute(
 ###### Attribute-based routing: 
 **One Way:**
 Url: `localhost/create-contact`
+
+Url: `localhost/contact/create-contact`
 ```c#
     public class ContactController : Controller
     {
        [Route("create-contact")]
-       [Route("book/create-contact")] // two url's will work or we can only use one
+       [Route("contact/create-contact")] // two url's will work or we can only use one
         public ActionResult Create()
         {
             return View();
@@ -339,7 +341,7 @@ Url: `localhost/create-contact`
 
 `https://localhost:7228/contact/new-contact`
 ```c#
-    [Route("contact")]  // when we use `[Route("contact")]` in controller, we must have to use `[Route("new-contact")]` in actions also.
+    [Route("contact")]  // when use `[Route("")]` in controller, we must have to use `[Route("")]` in actions also.
     public class ContactController : Controller
     {
        [Route("new-contact")]
