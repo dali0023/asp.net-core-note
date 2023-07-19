@@ -397,7 +397,7 @@ app.MapControllerRoute(
         }
     }
 ```
-
+**Map(), MapGet(), MapPost(), MapPut() & MapDelete() Methods**
 ```c#
 app.Map("/", ()=> "hello World!"); // accept all types of request
 app.MapGet("/", () => "hello World!"); // accept Only GET request
@@ -405,6 +405,17 @@ app.MapPost("/", () => "hello World!"); // accept Only POST request
 app.MapPut("/", () => "hello World!"); // accept Only PUT request
 app.MapDelete("/", () => "hello World!"); // accept Only Delete request
 ```
+#### Route Constraints:
+Route Constraints are used to filter the type of passed value to an action. For example, if you expect an integer type id, then you have to filter it using datatype, {id:int}
+
+`:int, :bool, :string, :datetime, :decimal, :guid`
+
+**There are two ways, you can add Constraint to a URL Parameter.**
+- Inline with the URL Parameter
+- Using the Constraint argument of the MapRoute method.
+
+
+
 
 
 
