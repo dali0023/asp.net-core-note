@@ -416,15 +416,20 @@ app.MapGet("/Routing", () => "Routing.");
 **Route groups**
 
 
+#### Static files in ASP.NET Core:
+
+Static files are stored within the project's `wwwroot` directory. 
+- wwwroot
+   - images
+     - MyImage.jpg
+
+Use It:
+`<img src="~/StaticFiles/images/red-rose.jpg" class="img" alt="A red rose" />`
+
+// Program.cs
+`app.UseStaticFiles(); // add this middleware`
 
 
-
-
-
-
-
-
-Static Files
 Error Handling
 Globalization and localization
 Configuration
