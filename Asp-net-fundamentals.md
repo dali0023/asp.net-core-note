@@ -406,13 +406,34 @@ app.MapPut("/", () => "hello World!"); // accept Only PUT request
 app.MapDelete("/", () => "hello World!"); // accept Only Delete request
 ```
 #### Route Constraints:
-Route Constraints are used to filter the type of passed value to an action. For example, if you expect an integer type id, then you have to filter it using datatype, {id:int}
+Route Constraints are used to filter the type of passed value to an action. For example, if you expect an integer type id as a parameter, then you have to filter it using datatype, {id:int}
 
-`:int, :bool, :string, :datetime, :decimal, :guid`
+`:int, 
+:bool, 
+:alpha (for string value use alpha)
 
-**There are two ways, you can add Constraint to a URL Parameter.**
+**There are two ways, you can add Constraint to a URL Parameter:**
 - Inline with the URL Parameter
 - Using the Constraint argument of the MapRoute method.
+
+
+```c#
+routes.MapRoute("default","{controller}/{action}/{id?)}", new { controller = "Home", action = "Index" }); // id? means optional
+routes.MapRoute("default", "{controller=Home}/{action=Index}/{id:int?}");
+```
+
+**Constraints in route attribute:**
+```c#
+[Route("Home/Details/{id:int?}")]  // filter int id as url parameter
+public IActionResult Details(int? id)  
+{  
+     return View();  
+} 
+```
+
+
+
+
 
 
 
