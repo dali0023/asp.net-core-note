@@ -426,9 +426,10 @@ Static files are stored within the project's `wwwroot` directory.
 Use It:
 `<img src="~/StaticFiles/images/red-rose.jpg" class="img" alt="A red rose" />`
 
+```c#
 // Program.cs
-`app.UseStaticFiles(); // add this middleware`
-
+app.UseStaticFiles(); // add this middleware`
+```
 
 Error Handling
 Globalization and localization
