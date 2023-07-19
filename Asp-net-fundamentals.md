@@ -260,8 +260,6 @@ app.UseWhen(context => context.Request.Query.ContainsKey("anyname"), app =>
 ```
 
 
-
-
 **Built-in middleware**
 
 - **Authentication Middleware:** This provides authentication functionality for the application, such as handling login and logout functionality.
@@ -445,6 +443,75 @@ Logging & Serilog
 - Servers
 - Request Features
 - xUnit
+
+
+###################################################################
+## MVC
+#### Overview of ASP.NET Core MVC
+**Models**
+ - Model Binding, Custom Model Binding
+ - Model Validation
+ - Formatting Response Data
+ - 🔧 Custom Formatters
+
+**Views**
+ - Views Overview
+ - Razor Views, Layout, Partial Views, View Components
+ - Pass Data to View
+ - Working with Forms
+   - HTML Helpers
+   - Tag Helpers
+ - Authoring Tag Helpers
+ - Injecting Services Into Views
+ - View Components
+ - 🔧 Creating a Custom View Engine
+
+#### Controllers
+Controllers, Actions, and IActionResult
+```c#
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+// Add MVC services to the container.
+builder.Services.AddControllersWithViews();
+```
+
+**Status Code Results**
+```c#
+return BadRequest(); ← Http status code 400
+return Unauthorized(); ← Http status code 401
+return NotFound(); ← Http status code 404
+```
+
+
+
+ 
+
+
+
+ 
+ - 🔧 Routing to Controller Actions
+ - Filters
+ - Dependency Injection and Controllers
+ - Testing Controller Logic
+ - Areas
+ - 🔧 Working with the Application Model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
