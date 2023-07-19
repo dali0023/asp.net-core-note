@@ -296,6 +296,7 @@ app.Run();
 ```
   
 ### Routing:
+
 ###### Conventional Routing: Controllers + Actions Methods.
 
 Url: `localhost/Home/Index`
@@ -365,13 +366,13 @@ app.MapControllerRoute(
     [Route("[controller]/[action]")] // whatever controller and action we write on URL, it will run these actions.
     public class ContactController : Controller
     {
-        // https://localhost:7228/contact
+        // https://localhost:7228/Contact/Index
         public ActionResult Index()
         {
             return View();
         }
 
-       // https://localhost:7228/contact/new-contact
+       // https://localhost:7228/Contact/Create
         public ActionResult Create()
         {
             return View();
@@ -418,18 +419,65 @@ Route Constraints are used to filter the type of passed value to an action. For 
 
 
 ```c#
-routes.MapRoute("default","{controller}/{action}/{id?)}", new { controller = "Home", action = "Index" }); // id? means optional
-routes.MapRoute("default", "{controller=Home}/{action=Index}/{id:int?}");
-```
+using Microsoft.AspNetCore.Routing.Constraints;
 
-**Constraints in route attribute:**
-```c#
-[Route("Home/Details/{id:int?}")]  // filter int id as url parameter
+// One way
+// localhost/Book/Details/12
+app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller}/{action}/{id?}", 
+        new { Controller = "Book", action = "Details" }, 
+        new { id = new IntRouteConstraint() }
+    );
+
+// Another Way
+// localhost/book/details/12
+app.MapControllerRoute(name: "default",
+    pattern: "/book/details/{id?}", 
+    new { Controller = "Book", action = "Details" }, 
+    new { id = new IntRouteConstraint() }
+);
+
+// BookController.cs
 public IActionResult Details(int? id)  
 {  
      return View();  
 } 
 ```
+
+**Constraints in route attribute:**
+```c#
+[Route("Book/Display/{id:int?}")] // https://localhost:7228/Book/Display/20
+[Route("book/display/{id:int?}")] // https://localhost:7228/book/display/20
+// [Route("Book/Display/{id:int:max(5)}")] 
+public IActionResult Display(int? id)  
+{  
+     return View();  
+} 
+```
+
+**Compare terminal middleware with routing:**
+```c#
+// Approach 1: Terminal Middleware/ set condition.
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path == "/")
+    {
+        await context.Response.WriteAsync("Terminal Middleware.");
+        return;
+    }
+
+    await next(context);
+});
+
+app.UseRouting();
+
+// Approach 2: Routing.
+app.MapGet("/Routing", () => "Routing.");
+```
+**Middleware example:**
+
+**Route groups**
 
 
 
