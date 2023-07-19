@@ -295,9 +295,9 @@ app.MapControllers();
 app.Run();
 ```
   
-### Routing:
+## Routing:
 
-###### Conventional Routing: Controllers + Actions Methods.
+#### Conventional Routing: Controllers + Actions Methods.
 ```c#
     // localhost/Home/Index
     public class HomeController : Controller
@@ -308,7 +308,7 @@ app.Run();
         }
     }
 ```
-****Another Way to write route on `Program.cs`**
+#### Another Way to write route on `Program.cs`**
 ```c#
 // localhost/create-book
 app.MapControllerRoute(
