@@ -398,6 +398,13 @@ app.MapControllerRoute(
     }
 ```
 
+```c#
+app.Map("/", ()=> "hello World!"); // accept all types of request
+app.MapGet("/", () => "hello World!"); // accept Only GET request
+app.MapPost("/", () => "hello World!"); // accept Only POST request
+app.MapPut("/", () => "hello World!"); // accept Only PUT request
+app.MapDelete("/", () => "hello World!"); // accept Only Delete request
+```
 
 
 
