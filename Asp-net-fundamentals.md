@@ -425,18 +425,11 @@ using Microsoft.AspNetCore.Routing.Constraints;
 // localhost/Book/Details/12
 app.MapControllerRoute(
         name: "default",
-        pattern: "{controller}/{action}/{id?}", 
+        pattern: "{controller}/{action}/{id?}", // localhost/Book/Details/12
+        // pattern: "/book/details/{id?}", // localhost/book/details/12
         new { Controller = "Book", action = "Details" }, 
         new { id = new IntRouteConstraint() }
     );
-
-// Another Way
-// localhost/book/details/12
-app.MapControllerRoute(name: "default",
-    pattern: "/book/details/{id?}", 
-    new { Controller = "Book", action = "Details" }, 
-    new { id = new IntRouteConstraint() }
-);
 
 // BookController.cs
 public IActionResult Details(int? id)  
