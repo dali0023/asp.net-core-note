@@ -298,9 +298,8 @@ app.Run();
 ### Routing:
 
 ###### Conventional Routing: Controllers + Actions Methods.
-
-Url: `localhost/Home/Index`
 ```c#
+    // localhost/Home/Index
     public class HomeController : Controller
     {
         public IActionResult Index()
