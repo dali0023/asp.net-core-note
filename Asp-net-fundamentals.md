@@ -447,9 +447,8 @@ public IActionResult Details(int? id)
 
 **Constraints in route attribute:**
 ```c#
-[Route("Book/Display/{id:int?}")] // https://localhost:7228/Book/Display/20
+// [Route("Book/Display/{id:int?}")] // https://localhost:7228/Book/Display/20
 [Route("book/display/{id:int?}")] // https://localhost:7228/book/display/20
-// [Route("Book/Display/{id:int:max(5)}")] 
 public IActionResult Display(int? id)  
 {  
      return View();  
