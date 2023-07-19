@@ -308,7 +308,7 @@ Url: `localhost/Home/Index`
         }
     }
 ```
-**Program.cs**
+****Another Way to write route on `Program.cs`**
 ```c#
 // localhost/create-book
 app.MapControllerRoute(
