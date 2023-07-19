@@ -317,27 +317,45 @@ app.MapControllerRoute(
     pattern: "/createbook", // url
     defaults: new {controller="Book", action="Create"}
 );
+```
+**Constraints (with Parameter) in Conventional Routing:**
+```c#
+using Microsoft.AspNetCore.Routing.Constraints;
 
+app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller}/{action}/{id?}", // localhost/Book/Details/12
+        // pattern: "/book/details/{id?}", // Also write localhost/book/details/12
+        new { Controller = "Book", action = "Details" }, 
+        new { id = new IntRouteConstraint() }
+    );
+
+// BookController.cs
+public IActionResult Details(int? id)  
+{  
+     return View();  
+} 
 ```
 
-
-#### Attribute-based routing: 
-**One Way:**
+#### Attribute Based Routing: 
 ```c#
-    public class ContactController : Controller
+   [Route("contact/create-contact")] // localhost/contact/create-contact
+    public ActionResult Create()
     {
-        // localhost/create-contact
-        // localhost/contact/create-contact
-       [Route("create-contact")]
-       [Route("contact/create-contact")] // two url's will work or we can only use one
-        public ActionResult Create()
-        {
-            return View();
-        }
+        return View();
     }
 ```
 
-**Another Way:**
+**Constraints (with Parameter) in Attribute Based route** 
+```c#
+[Route("book/display/{id:int?}")] // https://localhost:7228/book/display/20
+public IActionResult Display(int? id)  
+{  
+     return View();  
+} 
+```
+
+**Route Prefix:**
 
 ```c#
     [Route("contact")]  // when use `[Route("")]` in controller, we must have to use `[Route("")]` in actions also.
@@ -345,7 +363,7 @@ app.MapControllerRoute(
     {
         // https://localhost:7228/contact
         [Route("")]
-        [Route("Index")]
+        [Route("index")]
         [Route("/")]
         public ActionResult Index()
         {
@@ -361,43 +379,9 @@ app.MapControllerRoute(
     }
 ```
 
-#### Attribute Routing Tokens/ Dynamic
-```c#
-    [Route("[controller]/[action]")] // whatever controller and action we write on URL, it will run these actions.
-    public class ContactController : Controller
-    {
-        // https://localhost:7228/Contact/Index
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-       // https://localhost:7228/Contact/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-    }
-```
-
 #### Mixed Routing
+We can use both Conventional Routing and Attribute Routing.
 
-**We can use both Conventional Routing and Attribute Routing**
-```c#
-    [Route("[controller]/[action]")]
-    public class BookController : Controller
-    {
-        // https://localhost:7228/Book/Index
-        // https://localhost:7228/Book
-        [Route("")]
-        [Route("Index")]
-        [Route("/")]
-        public ActionResult Index()
-        {
-            return View();
-        }
-    }
-```
 **Map(), MapGet(), MapPost(), MapPut() & MapDelete() Methods**
 ```c#
 app.Map("/", ()=> "hello World!"); // accept all types of request
@@ -406,47 +390,8 @@ app.MapPost("/", () => "hello World!"); // accept Only POST request
 app.MapPut("/", () => "hello World!"); // accept Only PUT request
 app.MapDelete("/", () => "hello World!"); // accept Only Delete request
 ```
-#### Route Constraints:
-Route Constraints are used to filter the type of passed value to an action. For example, if you expect an integer type id as a parameter, then you have to filter it using datatype, {id:int}
-
-`:int, 
-:bool, 
-:alpha (for string value use alpha)
-
-**There are two ways, you can add Constraint to a URL Parameter:**
-- Inline with the URL Parameter
-- Using the Constraint argument of the MapRoute method.
 
 
-```c#
-using Microsoft.AspNetCore.Routing.Constraints;
-
-// One way
-// localhost/Book/Details/12
-app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller}/{action}/{id?}", // localhost/Book/Details/12
-        // pattern: "/book/details/{id?}", // localhost/book/details/12
-        new { Controller = "Book", action = "Details" }, 
-        new { id = new IntRouteConstraint() }
-    );
-
-// BookController.cs
-public IActionResult Details(int? id)  
-{  
-     return View();  
-} 
-```
-
-**Constraints in route attribute:**
-```c#
-// [Route("Book/Display/{id:int?}")] // https://localhost:7228/Book/Display/20
-[Route("book/display/{id:int?}")] // https://localhost:7228/book/display/20
-public IActionResult Display(int? id)  
-{  
-     return View();  
-} 
-```
 
 **Compare terminal middleware with routing:**
 ```c#
