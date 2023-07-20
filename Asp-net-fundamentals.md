@@ -664,6 +664,8 @@ public class HomeController : Controller
 
 Index.cshtml
 
+**We can use session from anywherein the apps**
+
 ```c#
 @inject IHttpContextAccessor context
 Name: @context.HttpContext.Session.GetString("Name")
