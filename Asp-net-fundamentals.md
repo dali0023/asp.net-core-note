@@ -498,11 +498,10 @@ public ViewResult Index(){ return View() }
 
 
 
-#### Pass Data From Controller to View
+### Pass Data From Controller to View
 
 
 ![DataPass](datapass.png)
-
 
 
  
@@ -516,20 +515,36 @@ public IActionResult Index()
     return View();
 }
 
-// view.cs
+// index.cshtml
 <h1>@ViewData["MyInfo"]</h1>
-<tbody>
-    // @foreach (var category in (IEnumerable<Category>)ViewData["AllCategories"]) // same
+ // @foreach (var category in (IEnumerable<Category>)ViewData["AllCategories"]) // same
     @foreach (var category in ViewData["AllCategories"] as IList<Category>) //same
        {
-         <tr>
+         <li>
             <td>@category.CategoryId</td>
             <td>@category.Name</td>
-         </tr>
+         </li>
         }
-</tbody>
 ```
 
+**ViewBag:**
+```c#
+// BookController.cs
+public IActionResult Index()
+{
+    ViewBag.MyInfo = "Nazmul Hasan";
+    ViewBag.AllCategories = _db.Categories.ToList();
+    return View();
+}
+
+// index.cshtml
+<h1>@ViewBag.MyInfo</h1>
+@foreach (var category in ViewBag.AllCategories)
+    {
+        <li>@category.CategoryId</li>
+        <li>@category.Name</li>
+    }
+```
 
 
  
