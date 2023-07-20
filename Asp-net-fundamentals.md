@@ -587,6 +587,7 @@ public IActionResult About()
 public IActionResult Index()
 {
     TempData["name"] = "Dalim Vai";
+    TempData["AllCategories"] = _db.Categories.ToList();
     return View();
 }
 
@@ -609,6 +610,18 @@ public class CategoryController : Controller
             return View();
         }
     }
+
+
+// Index.cshtml
+<table>
+    @foreach (var category in TempData["AllCategories"] as IList<Category>)
+       {
+         <tr>
+            <td>@category.CategoryId</td>
+            <td>@category.Name</td>
+         </tr>
+        }
+</table>
 ```
 
 
