@@ -481,6 +481,7 @@ return BadRequest(); ← Http status code 400
 return Unauthorized(); ← Http status code 401
 return NotFound(); ← Http status code 404
 ```
+
 **Action Method Returns:**
 ```c#
 public IActionResult Index(){ return View() }
