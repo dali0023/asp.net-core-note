@@ -546,6 +546,74 @@ public IActionResult Index()
     }
 ```
 
+**TempData:**
+- It is worked as a temporary data storage.
+- It is mainly used for store data as a one time message.
+- It is useful to transfer data between different action method in the different controller.
+- Internally, temp data uses session variables. 
+
+```c#
+public IActionResult Index()
+{
+    TempData["name"] = "Dalim Vai";
+    return View();
+}
+
+public IActionResult Contact()
+{
+    ViewBag.MyInfo = TempData["name"]; // return Dalim Vai
+    return View();
+}
+
+public IActionResult About()
+{
+    //Now, TempData["name"] is null because already used it in Privacy() method
+    ViewBag.MyInfo = TempData.; // no value
+    return View();
+}
+
+// ContactUs.cshtml
+<h2>Value- @ViewBag.MyInfo</h2> // Dalim vai
+
+// About.cshtml
+<h2>Value- @ViewBag.MyInfo</h2> // No value as already used in Contact()
+```
+
+**Store TempData for Next Uses(One time only)**
+- To save all temp data, we use TempData["name"].keep()
+- To save specific TempData, use 
+
+```c#
+public IActionResult Index()
+{
+    TempData["name"] = "Dalim Vai";
+    return View();
+}
+
+public IActionResult Privacy()
+{
+    // ViewBag.MyInfo = TempData["name"];
+    // TempData.Keep("name"); // Keep data for next one time uses
+
+    // Both Line also can be write using Peek(), it save data and also store data for next call
+    ViewBag.MyInfo = TempData.Peek("name");
+    return View();
+}
+
+// TempData can be used from Another Controller
+public class CategoryController : Controller
+    {
+        public IActionResult Index()
+        {
+            ViewBag.MyInfo = TempData["name"]; // Dalim Vai
+            return View();
+        }
+    }
+```
+
+
+
+
 
  
  - 🔧 Routing to Controller Actions
