@@ -517,14 +517,14 @@ public IActionResult Index()
 
 // index.cshtml
 <h1>@ViewData["MyInfo"]</h1>
- // @foreach (var category in (IEnumerable<Category>)ViewData["AllCategories"]) // same
-    @foreach (var category in ViewData["AllCategories"] as IList<Category>) //same
-       {
-         <li>
-            <td>@category.CategoryId</td>
-            <td>@category.Name</td>
-         </li>
-        }
+// @foreach (var category in (IEnumerable<Category>)ViewData["AllCategories"]) // same
+@foreach (var category in ViewData["AllCategories"] as IList<Category>) //same
+   {
+     <li>
+        <td>@category.CategoryId</td>
+        <td>@category.Name</td>
+     </li>
+    }
 ```
 
 **ViewBag:**
@@ -540,10 +540,10 @@ public IActionResult Index()
 // index.cshtml
 <h1>@ViewBag.MyInfo</h1>
 @foreach (var category in ViewBag.AllCategories)
-    {
-        <li>@category.CategoryId</li>
-        <li>@category.Name</li>
-    }
+{
+    <li>@category.CategoryId</li>
+    <li>@category.Name</li>
+}
 ```
 
 **TempData:**
