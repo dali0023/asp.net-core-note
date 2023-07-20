@@ -624,6 +624,54 @@ public class CategoryController : Controller
 </table>
 ```
 
+**Session:**
+
+Configure session state to `Program.cs`
+
+```c#
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor> ();
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(120);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+```
+
+HomeController.cs
+
+```c#
+public class HomeController : Controller
+{
+    private readonly IHttpContextAccessor context; // for session
+    private readonly TestDbContext _db; // for db
+    public HomeController(TestDbContext db, IHttpContextAccessor httpContextAccessor)
+    {
+        _db = db;
+        context = httpContextAccessor;
+    }
+    public IActionResult Index()
+    {
+        context.HttpContext.Session.SetString("Name", "The Doctor");
+        context.HttpContext.Session.SetInt32("Age", 73);
+        return View();
+    }
+}
+```
+
+Index.cshtml
+
+```c#
+@inject IHttpContextAccessor context
+Name: @context.HttpContext.Session.GetString("Name")
+Age: @context.HttpContext.Session.GetInt32("Age")
+```
+
+
+
+
 
 
 
