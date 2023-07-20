@@ -501,7 +501,7 @@ public ViewResult Index(){ return View() }
 #### Pass Data From Controller to View
 
 
-![Middleware Chain](middleware-chain.png)
+![DataPass](datapass.png)
 
 
 
