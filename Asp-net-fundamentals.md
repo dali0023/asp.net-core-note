@@ -496,9 +496,15 @@ public JsonResult JsonResult()
 public ViewResult Index(){ return View() }
 ```
 
+
+
 #### Pass Data From Controller to View
 
+
 ![Middleware Chain](middleware-chain.png)
+
+
+
  
 **ViewData:**
 ```c#
@@ -523,6 +529,8 @@ public IActionResult Index()
         }
 </tbody>
 ```
+
+
 
  
  - 🔧 Routing to Controller Actions
