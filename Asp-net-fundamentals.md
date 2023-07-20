@@ -624,6 +624,37 @@ public class CategoryController : Controller
 </table>
 ```
 
+**Display messege after storing data**
+```c#
+[HttpPost]
+[ValidateAntiForgeryToken]
+public IActionResult Create(Category category)
+{
+    if (ModelState.IsValid)
+    {
+        _db.Categories.Add(category);
+        _db.SaveChanges();
+
+        TempData["messege"] = "Data stored successfully!";
+        return RedirectToAction("Index");
+    }
+    return View(category);
+}
+
+// Index.cshtml
+@if (TempData["messege"] !=null)
+{
+    <div class="alert alert-success">
+        @TempData["messege"]
+    </div>
+}
+```
+
+
+
+
+
+
 **Session:**
 - Install `Microsoft.AspNetCore.Session` (for NTier select only project name and data access)
 
