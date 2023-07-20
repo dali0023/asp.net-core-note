@@ -519,12 +519,12 @@ public IActionResult Index()
 <h1>@ViewData["MyInfo"]</h1>
 // @foreach (var category in (IEnumerable<Category>)ViewData["AllCategories"]) // same
 @foreach (var category in ViewData["AllCategories"] as IList<Category>) //same
-   {
-     <li>
-        <td>@category.CategoryId</td>
-        <td>@category.Name</td>
-     </li>
-    }
+{
+ <li>
+    <td>@category.CategoryId</td>
+    <td>@category.Name</td>
+ </li>
+}
 ```
 
 **ViewBag:**
