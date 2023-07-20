@@ -625,6 +625,7 @@ public class CategoryController : Controller
 ```
 
 **Session:**
+- Install `Microsoft.AspNetCore.Session` (for NTier select only project name and data access)
 
 Configure session state to `Program.cs`
 
