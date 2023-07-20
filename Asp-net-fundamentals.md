@@ -496,9 +496,33 @@ public JsonResult JsonResult()
 public ViewResult Index(){ return View() }
 ```
 
+#### Pass Data From Controller to View
+
+![Middleware Chain](middleware-chain.png)
  
+**ViewData:**
+```c#
+// BookController.cs
+public IActionResult Index()
+{
+    ViewData["MyInfo"] = "Nazmul Hasan Dalim";
+    ViewData["AllCategories"] = _db.Categories.ToList();
+    return View();
+}
 
-
+// view.cs
+<h1>@ViewData["MyInfo"]</h1>
+<tbody>
+    // @foreach (var category in (IEnumerable<Category>)ViewData["AllCategories"]) // same
+    @foreach (var category in ViewData["AllCategories"] as IList<Category>) //same
+       {
+         <tr>
+            <td>@category.CategoryId</td>
+            <td>@category.Name</td>
+         </tr>
+        }
+</tbody>
+```
 
  
  - 🔧 Routing to Controller Actions
