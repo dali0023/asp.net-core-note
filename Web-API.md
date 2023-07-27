@@ -53,8 +53,14 @@ Operations
 Details: https://jsonpatch.com/
 
 
+**To Stop other Type except JSON, and allow manually XML Type in Program.cs**
+```c#
+// Change From
+builder.Services.AddControllers().AddNewtonsoftJson();
 
-
+// Change To
+builder.Services.AddControllers(option =>{option.ReturnHttpNotAcceptable=true;}).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
+```
 
 
 
