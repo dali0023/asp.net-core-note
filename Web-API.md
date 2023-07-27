@@ -27,27 +27,29 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 
 
 ### For JsonPatch Notes:
-```c#
-Add: `{ "op": "add", "path": "/biscuits/1", "value": { "name": "Ginger Nut" } }`
-Remove: 
+```Json
+// Add:
+{ "op": "add", "path": "/biscuits/1", "value": { "name": "Ginger Nut" } }
+
+// Remove: 
 `{ "op": "remove", "path": "/biscuits" }` // Removes a value from an object or array.
 `{ "op": "remove", "path": "/biscuits/0" }`
-Removes the first element of the array at biscuits (or just removes the “0” key if biscuits is an object)
+// Removes the first element of the array at biscuits (or just removes the “0” key if biscuits is an object)
 
-Replace
+// Replace
 `{ "op": "replace", "path": "/biscuits/0/name", "value": "Chocolate Digestive" }`
 
-Copy
+// Copy
 `{ "op": "copy", "from": "/biscuits/0", "path": "/best_biscuit" }`
-Copies a value from one location to another within the JSON document. Both from and path are JSON Pointers.
+// Copies a value from one location to another within the JSON document. Both from and path are JSON Pointers.
 
-Move
+// Move
 `{ "op": "move", "from": "/biscuits", "path": "/cookies" }`
-Moves a value from one location to the other. Both from and path are JSON Pointers.
+// Moves a value from one location to the other. Both from and path are JSON Pointers.
 
-Test
+// Test
 `{ "op": "test", "path": "/best_biscuit/name", "value": "Choco Leibniz" }`
-Tests that the specified value is set in the document. If the test fails, then the patch as a whole should not apply.
+// Tests that the specified value is set in the document. If the test fails, then the patch as a whole should not apply.
 ```
 Operations
 
