@@ -41,7 +41,7 @@ Replace
 Copy
 { "op": "copy", "from": "/biscuits/0", "path": "/best_biscuit" }
 
-// Move
+Move
 { "op": "move", "from": "/biscuits", "path": "/cookies" }
 
 Test
