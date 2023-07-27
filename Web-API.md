@@ -10,8 +10,11 @@
 - Consuming API with Authentication endpoints
 - Deploying API
 
-
-
+**To Use JsonPath install:**
+```c#
+Microsoft.AspNetCore.JsonPatch
+Microsoft.AspNetCore.Mvc.NewtonsoftJson
+```
 
 
 
