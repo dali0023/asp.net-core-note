@@ -27,7 +27,7 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 
 
 ### For JsonPatch Notes:
-```JSON
+```c#
 Add: `{ "op": "add", "path": "/biscuits/1", "value": { "name": "Ginger Nut" } }`
 Remove: 
 `{ "op": "remove", "path": "/biscuits" }` // Removes a value from an object or array.
