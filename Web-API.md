@@ -27,7 +27,7 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 
 
 ### For JsonPatch Notes:
-Operations
+```Json
 Add: `{ "op": "add", "path": "/biscuits/1", "value": { "name": "Ginger Nut" } }`
 Remove: 
 `{ "op": "remove", "path": "/biscuits" }` // Removes a value from an object or array.
@@ -48,6 +48,9 @@ Moves a value from one location to the other. Both from and path are JSON Pointe
 Test
 `{ "op": "test", "path": "/best_biscuit/name", "value": "Choco Leibniz" }`
 Tests that the specified value is set in the document. If the test fails, then the patch as a whole should not apply.
+```
+Operations
+
 
 Details: https://jsonpatch.com/
 
