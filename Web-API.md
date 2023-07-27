@@ -11,12 +11,19 @@
 - Deploying API
 
 
-**To Use JsonPath install:**
+**To Use JsonPatch install:**
 ```c#
 Microsoft.AspNetCore.JsonPatch
 Microsoft.AspNetCore.Mvc.NewtonsoftJson
 ```
+Also Update Program.cs
+```c#
+// Change From
+builder.Services.AddControllers();
 
+// Change To
+builder.Services.AddControllers().AddNewtonsoftJson();
+```
 
 
 
