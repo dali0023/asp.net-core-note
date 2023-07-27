@@ -40,7 +40,6 @@ Replace
 
 Copy
 { "op": "copy", "from": "/biscuits/0", "path": "/best_biscuit" }
-Copies a value from one location to another within the JSON document. Both from and path are JSON Pointers.
 
 // Move
 { "op": "move", "from": "/biscuits", "path": "/cookies" }
