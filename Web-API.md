@@ -59,7 +59,8 @@ Details: https://jsonpatch.com/
 builder.Services.AddControllers().AddNewtonsoftJson();
 
 // Change To
-builder.Services.AddControllers(option =>{option.ReturnHttpNotAcceptable=true;}).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
+builder.Services.AddControllers(option =>{option.ReturnHttpNotAcceptable=true;})
+                .AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
 ```
 
 
