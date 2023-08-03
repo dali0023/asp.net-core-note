@@ -807,6 +807,9 @@ Log.Logger = new LoggerConfiguration().MinimumLevel.Debug()
                                       .WriteTo.File("log/villaLogs.txt", rollingInterval:RollingInterval.Day).CreateLogger();
 builder.Host.UseSerilog();
 ```
+
+`log/loggingFile.txt`
+
 ![Serilog](serilog.jpg)
 
 
