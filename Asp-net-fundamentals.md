@@ -740,27 +740,7 @@ Age: @context.HttpContext.Session.GetInt32("Age")
 
 ## Logging & Serilog
 It helps us in the investigation of the essence of problems. We can pass messege from every function so that we can know quickly any error or success.
-So, there are two important building blocks for implementing logging in a .NET Core based application:
 
-- Logging API
-- Logging Providers
-
-Program.cs
-```c#
-var builder = WebApplication.CreateBuilder(args);
-// Add Logger
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
-```
-**Or/ Alternatively, the preceding logging code can be written as follows:**
-```c#
-var builder = WebApplication.CreateBuilder();
-builder.Host.ConfigureLogging(logging =>
-{
-    logging.ClearProviders();
-    logging.AddConsole();
-});
-```
 **Create logs in Controller**
 ```c#
 private readonly ILogger<VillaAPIController> _logger;
