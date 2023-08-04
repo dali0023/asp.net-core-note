@@ -125,8 +125,8 @@ app.Run();
 ```
 
 **Middleware Chain/ Multiple Middleware:** run middleware one after other
-
 ![Middleware Chain](middleware-chain.png)
+
 
 ```c#
 // For Multiple Middleware
@@ -899,7 +899,7 @@ Add Custom Logger in `Program.cs`
 ```c#
 builder.Services.AddSingleton<ILogging, Logging>();
 ```
-
+![Middleware Chain](custom-logger.png)
 
 
 
