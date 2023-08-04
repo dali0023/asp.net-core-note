@@ -829,7 +829,7 @@ builder.Host.UseSerilog();
 ![Serilog](serilog.jpg)
 
 
-**Custom Logger**
+### Custom Logger
 We can also create custom logger if don't want default logger.
 
 Create two files on project:
