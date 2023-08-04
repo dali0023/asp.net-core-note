@@ -899,7 +899,8 @@ Add Custom Logger in `Program.cs`
 ```c#
 builder.Services.AddSingleton<ILogging, Logging>();
 ```
-![Middleware Chain](custom-logger.png)
+
+![Custom Logger](custom-logger.png)
 
 
 
