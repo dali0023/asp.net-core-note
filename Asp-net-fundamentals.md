@@ -437,7 +437,23 @@ Environments (dev, stage, prod)
 HttpContext
 Logging & Serilog
  🔧 File Providers
-- Dependency Injection
+
+
+
+**Dependency Injection**
+3 Service lifetimes:
+
+**Singleton:** this lifetime creates one instance of the service. The service instance may be created at the registration time by using the Add() method, as you saw in the example above. Alternatively, the service instance can be created the first time it is requested by using the `AddSingleton()` method.
+
+**Transient:** by using this lifetime, your service will be created each time it will be requested. This means, for example, that a service injected in the constructor of a class will last as long as that class instance exists. To create a service with the transient lifetime, you have to use the `AddTransient()` method.
+
+**Scoped:** the scoped lifetime allows you to create an instance of a service for each client request. This is particularly useful in the ASP.NET context since it allows you to share the same service instance for the duration of an HTTP request processing. To enable the scoped lifetime, you need to use the `AddScoped()` method.
+
+
+
+
+
+
 - Hosting
 - Session and state management
 - Servers
@@ -813,9 +829,76 @@ builder.Host.UseSerilog();
 ![Serilog](serilog.jpg)
 
 
+**Custom Logger**
+We can also create custom logger if don't want default logger.
 
+Create two files on project:
+- Interface- `Logging/ILogging.cs`
+```c#
+namespace MagicVilla_VillaAPI.Logging
+{
+    public interface ILogging
+    {
+        public void Log(string message, string type);
+    }
+}
+```
 
+- Class- `Logging/Logging.cs`
+```c#
+namespace MagicVilla_VillaAPI.Logging
+{
+    public class Logging : ILogging
+    {
+        public void Log(string message, string type)
+        {
+            if (type == "error") 
+            { 
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error - "+ message);
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
+            else
+            {
+                Console.WriteLine(message);
+            }
+        }
+    }
+}
+```
 
+`VillaAPIController.cs`
+```c#
+public class VillaAPIController : ControllerBase
+    {
+        private readonly ILogging _logger;
+        public VillaAPIController(ILogging logger)
+        {
+            _logger = logger;
+        }
+
+        public ActionResult<IEnumerable<VillaDto>> GetVillas()
+        {
+            _logger.Log("Getting All Villas", "");
+            return Ok(VillaStore.villaLists);       
+        }
+
+        public ActionResult<VillaDto> GetVilla(int id)
+        {
+            if (id == 0)
+            {
+                _logger.Log("Get villa Error with id" + id, "error");
+                return BadRequest();
+            }            
+            return Ok("");
+        }
+}
+```
+
+Add Custom Logger in `Program.cs`
+```c#
+builder.Services.AddSingleton<ILogging, Logging>();
+```
 
 
 
