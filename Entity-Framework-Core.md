@@ -1,5 +1,18 @@
 # Entity Framework Core 
 
+
+<details>
+    <summary>Toggle Switch</summary>
+    Foldable Content[enter image description here][1]
+</details>
+
+
+
+
+
+
+
+
 # 1. Create N-Tier Architecture:
 •	Right Click `Project Soluation>Add>New Project>Search Class Library then Select> Class Library C#(.Net )`
 
@@ -22,14 +35,6 @@ Install:
 Select only ProjectName And Project_Data_Access
 - Microsoft.EntityFrameworkCore.SqlServer
 - Microsoft.EntityFrameworkCore.Tools
-
-
-
-<details>
-    <summary>Toggle Switch</summary>
-    Foldable Content[enter image description here][1]
-</details>
-
 
 
 ## 1.	Connecting to Database:
