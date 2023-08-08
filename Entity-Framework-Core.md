@@ -25,6 +25,13 @@ Select only ProjectName And Project_Data_Access
 
 
 
+<details>
+    <summary>Toggle Switch</summary>
+    Foldable Content[enter image description here][1]
+</details>
+
+
+
 ## 1.	Connecting to Database:
    - Database Connection String
    - DBContext
