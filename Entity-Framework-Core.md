@@ -786,10 +786,41 @@ public class FluentBookAuthorConfig : IEntityTypeConfiguration<FluentBookAuthor>
 
 
 ## AutoMapper
-
+- Install these packages:
 
 `AutoMapper`
 `AutoMapper.Extensions.Microsoft.DependencyInjection`
+
+**Configuration:**
+Program.cs
+```c#
+// Add Auto Mapper (before builder.Services.AddControllers)
+builder.Services.AddAutoMapper(typeof(MappingConfig));
+```
+
+**Create MappingConfig.cs in project root folder**
+```c#
+// MappingConfig.cs
+public class MappingConfig : Profile
+{
+  public MappingConfig() 
+  {
+      CreateMap<Villa, VillaDto>();
+      CreateMap<VillaDto, Villa>();
+
+      // Same
+      CreateMap<Villa, VillaCreateDto>().ReverseMap();
+      CreateMap<Villa, VillaUpdateDto>().ReverseMap();
+  }
+}
+```
+
+
+
+
+
+
+
 
 
 
