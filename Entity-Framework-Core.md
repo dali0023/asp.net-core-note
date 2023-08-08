@@ -237,6 +237,34 @@ public class ApplicationDbContext : DbContext
    }
 }
 ```
+
+## Use In Controller:
+```c#
+public class VillaAPIController : ControllerBase
+    {
+
+        private readonly ILogger<VillaAPIController> _logger; // if want to use logger
+        private readonly ApplicationDbContext _db;
+        public VillaAPIController(ApplicationDbContext db, ILogger<VillaAPIController> logger)
+        {
+            _db = db;
+            _logger = logger;
+        }
+
+        [HttpGet]
+        //[ProducesResponseType(200)]
+        [ProducesResponseType(StatusCodes.Status200OK)] // same 200
+        public ActionResult<IEnumerable<VillaDto>> GetVillas()
+        {
+            _logger.LogInformation("Getting All Villas Successfully!");
+            return Ok(_db.Villas.ToList());       
+        }
+    }
+```
+
+
+
+
 **Add Migration And Update Database**
 
 `add-migration SeedDataToVillaTable`
