@@ -3,7 +3,7 @@
 
 <details>
     <summary>Toggle Switch</summary>
-    Dalim vai Foldable Content[enter image description here][1]
+    Dalim[enter image description here][1]
 </details>
 
 
