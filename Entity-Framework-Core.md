@@ -816,8 +816,12 @@ public class MappingConfig : Profile
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 ```
 
+
+
 **Before Mapping**
+
 ```c#
+
 namespace MagicVilla_VillaAPI.Controllers
 {
     [Route("api/[controller]")]
