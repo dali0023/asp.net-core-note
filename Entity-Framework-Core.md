@@ -238,7 +238,10 @@ public class ApplicationDbContext : DbContext
 }
 ```
 
-## Use In Controller:
+
+
+**Use In Controller:**
+
 ```c#
 public class VillaAPIController : ControllerBase
     {
