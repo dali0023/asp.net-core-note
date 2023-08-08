@@ -783,7 +783,10 @@ public class FluentBookAuthorConfig : IEntityTypeConfiguration<FluentBookAuthor>
 
 
 
+
+
 ## AutoMapper
+
 
 `AutoMapper`
 `AutoMapper.Extensions.Microsoft.DependencyInjection`
