@@ -791,12 +791,6 @@ public class FluentBookAuthorConfig : IEntityTypeConfiguration<FluentBookAuthor>
 `AutoMapper`
 `AutoMapper.Extensions.Microsoft.DependencyInjection`
 
-**Configuration:**
-Program.cs
-```c#
-// Add Auto Mapper (before builder.Services.AddControllers)
-builder.Services.AddAutoMapper(typeof(MappingConfig));
-```
 
 **Create MappingConfig.cs in project root folder**
 ```c#
@@ -815,7 +809,12 @@ public class MappingConfig : Profile
 }
 ```
 
+**Configuration:** Program.cs
 
+```c#
+// Add Auto Mapper (before builder.Services.AddControllers)
+builder.Services.AddAutoMapper(typeof(MappingConfig));
+```
 
 
 
