@@ -819,14 +819,7 @@ builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 <details>
     <summary>Before Mapping</summary>
-    Dalim[enter image description here][1]
-</details>
-
-
-**Before Mapping**
-
-```c#
-
+    ```c#
 namespace MagicVilla_VillaAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -1020,6 +1013,12 @@ namespace MagicVilla_VillaAPI.Controllers
 }
 
 ```
+</details>
+
+
+**Before Mapping**
+
+
 
 
 
