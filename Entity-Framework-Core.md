@@ -819,9 +819,7 @@ builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 <details>
     <summary>Before Mapping</summary>
-      
-    ```c#
-      namespace MagicVilla_VillaAPI.Controllers
+     namespace MagicVilla_VillaAPI.Controllers
       {
           [Route("api/[controller]")]
           // [Route("api/VillaAPI")] // same
@@ -1012,8 +1010,6 @@ builder.Services.AddAutoMapper(typeof(MappingConfig));
       
           }
       }
-      
-      ```
 </details>
 
 
