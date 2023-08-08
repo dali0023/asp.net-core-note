@@ -203,6 +203,45 @@ or
 PM> Remove-Migration -Force
 ```
 
+
+## Seed Data to a Table:
+
+`ApplicationDbContext.cs`
+
+```c#
+// Seed Data
+public class ApplicationDbContext : DbContext
+{
+   public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+   public DbSet<Villa> Villas { get; set; }
+   protected override void OnModelCreating(ModelBuilder modelBuilder)
+   {
+      base.OnModelCreating(modelBuilder);
+      modelBuilder.Entity<Villa>().HasData(
+        new Villa
+          {
+              Id = 1,
+              Name = "Royal Villa",
+              ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa3.jpg",
+              Amenity = "",
+              CreatedDate = DateTime.Now
+          },
+        new Villa
+        {
+            Id = 2,
+            Name = "Premium Pool Villa",
+            ImageUrl = "https://dotnetmastery.com/bluevillaimages/villa1.jpg",
+            Amenity = "",
+            CreatedDate = DateTime.Now
+        });
+   }
+}
+```
+**Add Migration And Update Database**
+
+`add-migration SeedDataToVillaTable`
+`update-database`
+
 ## Relationship:
 
 Fluent API provides a number of important methods to configure entities and its properties:
