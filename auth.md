@@ -76,3 +76,32 @@ else
 </ul>
 ```
 
+## Authorization
+Update Program.cs
+
+```c#
+// From
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<CoffeeShopDbContext>();
+
+// To
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<AuthTestDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
