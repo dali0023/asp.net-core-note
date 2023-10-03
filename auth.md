@@ -89,7 +89,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 ```
-**Add RolesController.cs**
+**Add `RolesController.cs`**
 
 ```C#
 public class RolesController : Controller
@@ -126,9 +126,58 @@ public class RolesController : Controller
         }
     }
 ```
+**Add Views/Roles/Index.cshtml**
 
+```c#
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<IdentityRole>
+@{
+    ViewData["Title"]= "Roles";
+}
+<h2>Roles - </h2>
+<a class="btn btn-link" asp-area="" asp-controller="Roles" asp-action="Create">Add New Role</a>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">NormalizeName</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Name</td>
+                <td>@item.NormalizedName</td>
+            </tr>
+        } 
+    </tbody>
+</table>
+```
 
-
+**Add Views/Roles/Create.cshtml**
+```c#
+@using Microsoft.AspNetCore.Identity
+@model IdentityRole
+@{
+}
+<h5>Add New Roles</h5>
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <form asp-action ="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Name</label>
+                <input type="text" class="form-control" asp-for="Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+```
 
 
 
