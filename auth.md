@@ -179,8 +179,13 @@ public class RolesController : Controller
 </div>
 ```
 
+**Update Link to Layout.cshtml**
 
-
+```c#
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
+</li>
+```
 
 
 
