@@ -77,10 +77,10 @@ else
 ```
 
 ## Authorization
-Update Program.cs
+Update `Program.cs`
 
 ```c#
-// From
+// Change From
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<CoffeeShopDbContext>();
 
 // To
@@ -89,8 +89,43 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
 ```
+**Add RolesController.cs**
 
+```C#
+public class RolesController : Controller
+    {
+        private readonly RoleManager<IdentityRole> _manager;
+        public RolesController(RoleManager<IdentityRole> roleManager)
+        {
+            this._manager = roleManager;
+        }
+        // GET: RolesController
+        public ActionResult Index()
+        {
+            var roles = _manager.Roles.ToList();
+            return View(roles);
+        }
 
+        // GET: RolesController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: RolesController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IdentityRole role)
+        {
+            // Check if the role exists
+            if (!_manager.RoleExistsAsync(role.Name).GetAwaiter().GetResult())
+            {
+                _manager.CreateAsync(new IdentityRole(role.Name)).GetAwaiter().GetResult();
+            }
+            return RedirectToAction("Index");
+        }
+    }
+```
 
 
 
