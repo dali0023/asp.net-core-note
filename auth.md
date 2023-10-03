@@ -179,7 +179,7 @@ public class RolesController : Controller
 </div>
 ```
 
-**Update Link to Layout.cshtml**
+**Update Link to _Layout.cshtml**
 
 ```c#
 <li class="nav-item">
