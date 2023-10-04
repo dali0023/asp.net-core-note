@@ -85,9 +85,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 // To
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<AuthTestDbContext>()
-                .AddDefaultUI()
-                .AddDefaultTokenProviders();
+       .AddEntityFrameworkStores<ApplicationDbContext>()
+       .AddDefaultUI()
+       .AddDefaultTokenProviders();
 ```
 **Add `RolesController.cs`**
 
@@ -95,6 +95,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
 public class RolesController : Controller
     {
         private readonly RoleManager<IdentityRole> _manager;
+
         public RolesController(RoleManager<IdentityRole> roleManager)
         {
             this._manager = roleManager;
@@ -105,6 +106,7 @@ public class RolesController : Controller
             var roles = _manager.Roles.ToList();
             return View(roles);
         }
+
 
         // GET: RolesController/Create
         public ActionResult Create()
@@ -132,7 +134,7 @@ public class RolesController : Controller
 @using Microsoft.AspNetCore.Identity
 @model IEnumerable<IdentityRole>
 @{
-    ViewData["Title"]= "Roles";
+    ViewData["Title"] = "Roles";
 }
 <h2>Roles - </h2>
 <a class="btn btn-link" asp-area="" asp-controller="Roles" asp-action="Create">Add New Role</a>
@@ -152,7 +154,8 @@ public class RolesController : Controller
                 <td>@item.Name</td>
                 <td>@item.NormalizedName</td>
             </tr>
-        } 
+        }
+
     </tbody>
 </table>
 ```
@@ -166,7 +169,7 @@ public class RolesController : Controller
 <h5>Add New Roles</h5>
 <div class="row">
     <div class="col-md-6 offset-3">
-        <form asp-action ="Create">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-3">
                 <label asp-for="Name" class="form-label">Name</label>
@@ -186,6 +189,114 @@ public class RolesController : Controller
     <a class="nav-link text-dark" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
 </li>
 ```
+
+## Assign Roles To Users
+`ManageUsersController.cs`
+```c#
+public class ManageUsersController : Controller
+    {
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly ApplicationDbContext _context;
+
+        public ManageUsersController(
+            UserManager<IdentityUser> userManager,
+            ApplicationDbContext context, RoleManager<IdentityRole> roleManager
+            )
+        {
+            this._userManager = userManager;
+            this._context = context;
+            this._roleManager = roleManager;
+        }
+        // GET: RolesController
+        public ActionResult Index()
+        {
+            var users = _userManager.Users.Select(c => new UserViewModel()
+            {
+                Id = c.Id,
+                UserEmail = c.Email,
+                AllRoles = _roleManager.Roles.ToList(),
+                Role = string.Join(",", _userManager.GetRolesAsync(c).Result.ToArray())
+            }).ToList();
+            var x = users;
+
+            return View(users);
+        }
+
+        public async Task<IActionResult> AssignRolesToUser(string roleId, string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            var role = await _roleManager.FindByIdAsync(roleId.ToString());
+            var checkUserRole = await _userManager.IsInRoleAsync(user, role.Name);
+
+            if (checkUserRole == false)
+            {
+                await _userManager.RemoveFromRolesAsync(user, await _userManager.GetRolesAsync(user));
+                await _userManager.AddToRoleAsync(user, role.Name);
+            }            
+            return RedirectToAction("Index");
+        }
+   }
+```
+
+
+**ManageUsers/Index.cshtml**
+```c#
+@model IEnumerable<WebApplication6.Models.ViewModels.UserViewModel>
+@{
+}
+<h2>All Users</h2>
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">User Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Assign Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.UserEmail</td>
+                <td>@item.Role</td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Assign Role
+                        </button>
+                        <ul class="dropdown-menu">
+                            @foreach (var RoleLists in item.AllRoles)
+                                {
+                                    <li><a class="dropdown-item" asp-controller="ManageUsers" asp-action="AssignRolesToUser" asp-route-roleId="@RoleLists.Id" asp-route-userId="@item.Id">@RoleLists.Name</a></li>
+                                }
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            }
+            
+        </tbody>
+    </table>
+</div>
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
