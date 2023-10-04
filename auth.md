@@ -188,6 +188,9 @@ public class RolesController : Controller
 <li class="nav-item">
     <a class="nav-link text-dark" asp-area="" asp-controller="Roles" asp-action="Index">Roles</a>
 </li>
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="ManageUsers" asp-action="Index">Users</a>
+</li>
 ```
 
 ## Assign Roles To Users
