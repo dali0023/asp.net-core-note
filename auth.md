@@ -242,6 +242,17 @@ public class ManageUsersController : Controller
    }
 ```
 
+**User Models/ViewModels/UserViewModel**
+```c#
+ public class UserViewModel
+    {
+        public string Id { get; set; }
+        public string UserEmail { get; set; }
+        public List<IdentityRole> AllRoles { get; set; }
+        public string Role { get; set; }
+    }
+
+```
 
 **ManageUsers/Index.cshtml**
 ```c#
