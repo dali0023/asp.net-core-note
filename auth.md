@@ -256,7 +256,7 @@ public class ManageUsersController : Controller
 
 **ManageUsers/Index.cshtml**
 ```c#
-@model IEnumerable<WebApplication6.Models.ViewModels.UserViewModel>
+@model IEnumerable<ProjectFolderName.Models.ViewModels.UserViewModel>
 @{
 }
 <h2>All Users</h2>
